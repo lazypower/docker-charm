@@ -1,0 +1,5 @@
+options:
+  latest:
+    type: boolean
+    default: False
+    description: "Deploy Latest Docker from Upstream"

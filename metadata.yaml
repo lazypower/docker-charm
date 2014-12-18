@@ -1,0 +1,19 @@
+name: docker
+summary: Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications.
+maintainer: Charles Butler <charles.butler@ubuntu.com>
+description: |
+ Deploys Docker Engine, a portable, lightweight runtime and packaging tool. 
+tags:
+  # Replace "misc" with one or more whitelisted tags from this list:
+  # https://juju.ubuntu.com/docs/authors-charm-metadata.html#charm-metadata
+  - misc
+subordinate: false
+provides:
+  provides-relation:
+    interface: interface-name
+requires:
+  requires-relation:
+    interface: interface-name
+peers:
+  peer-relation:
+    interface: interface-name
