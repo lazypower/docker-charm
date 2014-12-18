@@ -18,9 +18,18 @@
       apt: pkg={{ item }} state=latest update_cache=yes
       with_items:
         - docker.io
+      when: latest == false
       tags:
         - install
         - upgrade-charm
+
+    - name: Install required packages from upstream
+      include: playbooks/upstream-docker.yaml
+      when: latest == true
+      tags:
+        - install
+        - upgrade-charm
+
 
     - name: Add Docker Group
       group: name=docker state=present
@@ -32,22 +41,3 @@
       user: name=ubuntu state=present groups="docker"
       tags:
         - install
-
-    # - name: Put app code in place.
-    #   git: repo=git://github.com/absoludity/charm-bootstrap-ansible.git
-    #        dest=/srv/myapp
-    #        version=HEAD
-    #   tags:
-    #     - install
-    #     - config-changed
-    #
-    # - name: Start service
-    #   debug: msg="You'd start some service here. The config 'string-option' has the value '{{ string_option }}'"
-    #   tags:
-    #     - start
-    #     - config-changed
-    #
-    # - name: Stop service
-    #   debug: msg="You'd stop some service here. The config 'string-option' is '{{ string_option }}'"
-    #   tags:
-    #     - stop
