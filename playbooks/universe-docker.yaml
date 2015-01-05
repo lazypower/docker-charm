@@ -1,0 +1,15 @@
+---
+- name: remove lxc-docker
+  shell: apt-get remove -y lxc-docker
+  when: latest_installed
+
+- debug: msg="Install docker from universe"
+
+- name: Install required packages.
+  apt: pkg={{ item }}
+       state=latest
+       update_cache=yes
+       cache_valid_time=6000
+  with_items:
+    - docker.io
+  when: latest == false

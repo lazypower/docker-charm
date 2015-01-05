@@ -1,17 +1,4 @@
 ---
-- name: Install required packages.
-  apt: pkg={{ item }}
-       state=latest
-       update_cache=yes
-       cache_valid_time=6000
-  with_items:
-    - docker.io
-  when: latest == false
-
-- name: Install required packages from upstream
-  include: playbooks/upstream-docker.yaml
-  when: latest == true
-
 - name: Add Docker Group
   group: name=docker state=present
 
