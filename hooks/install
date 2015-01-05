@@ -1,1 +1,9 @@
-hooks.py
+#!/usr/bin/env python
+import setup
+import sys
+
+if __name__ == "__main__":
+    setup.pre_install()
+
+    from hooks import hooks
+    hooks.execute(sys.argv)
