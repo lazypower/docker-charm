@@ -24,7 +24,7 @@
         - upgrade-charm
 
     - name: Install required packages from upstream
-      include: playbooks/upstream-docker.yaml
+      include: upstream-docker.yaml
       when: latest == true
       tags:
         - install
