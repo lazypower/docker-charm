@@ -1,34 +1,26 @@
 #!/usr/bin/env python
-
-import os
+from charmhelpers.contrib.ansible import AnsibleHooks
+from charmhelpers.contrib.ansible import install_ansible_support
 import sys
 
-sys.path.insert(0, os.path.join(os.environ['CHARM_DIR'], 'lib'))
+hook_names = [
+    'config-changed',
+    'install',
+    'start',
+    'stop',
+    'upgrade-charm',
+    ]
 
-import charmhelpers.contrib.ansible
-
-# Create the hooks helper, passing a list of hooks which will be
-# handled by default by running all sections of the playbook
-# tagged with the hook name.
-hooks = charmhelpers.contrib.ansible.AnsibleHooks(
-    playbook_path='playbooks/site.yaml',
-    default_hooks=[
-        'start',
-        'stop',
-        'config-changed',
-        'upgrade-charm',
-    ])
+hooks = AnsibleHooks(playbook_path='playbooks/site.yaml',
+                     default_hooks=hook_names)
 
 
 @hooks.hook('install', 'upgrade-charm')
 def install():
-    """Install ansible.
-
-    The hook() helper decorating this install function ensures that after this
-    function finishes, any tasks in the playbook tagged with install or
-    upgrade-charm are executed.
     """
-    charmhelpers.contrib.ansible.install_ansible_support(from_ppa=True)
+    Install or upgrade ansible.
+    """
+    install_ansible_support(from_ppa=True)
 
 
 if __name__ == "__main__":
