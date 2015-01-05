@@ -1,7 +1,12 @@
 - hosts: all
   tasks:
     - name: install or upgrade
-      include: playbooks/install-or-upgrade.yaml
+      include: install-or-upgrade.yaml
       tags:
         - install
         - upgrade-charm
+
+    - name: config changed
+      include: config-changed.yaml
+      tags:
+        - config-changed
