@@ -1,0 +1,20 @@
+---
+- name: check for docker.io
+  shell: "dpkg -l docker.io | grep docker.io | cut -d' '  -f1"
+  register: universe_check
+
+- name: check for lxc-docker
+  shell: "dpkg -l lxc-docker | grep lxc-docker | cut -d' '  -f1"
+  register: latest_check
+
+- set_fact:
+    universe_installed: universe_check.stdout == 'ii'
+    latest_installed: latest_check.stdout == 'ii'
+
+- name: enforce latest docker
+  when: latest == true
+  include: latest-docker.yaml
+
+- name: enforce universe docker
+  when: latest == false
+  include: universe-docker.yaml

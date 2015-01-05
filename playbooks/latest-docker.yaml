@@ -1,0 +1,17 @@
+---
+- name: remove docker.io
+  shell: apt-get remove -y docker.io
+  when: universe_installed
+
+- name: Add upstream apt key
+  apt_key: id=36A1D7869245C8950F966E92D8576A8BA88D21E9 keyserver=keyserver.ubuntu.com
+
+- name: Add Upstream apt repository
+  apt_repository: repo='deb https://get.docker.com/ubuntu docker main' state=present
+
+- debug: msg="Installing latest"
+
+- name: Install required packages.
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - lxc-docker

@@ -1,43 +1,12 @@
-# The tasks here are left as examples and should be removed/replaced by the
-# charm author. Some things to note:
-# 1. All charm config values are available as template variables
-#    e.g. repo -> {{repo}}, app-name -> {{app_name}} (note underscore)
-# 2. Along with charm config values, the following variables are also
-#    made available as template vars:
-#    charm_dir
-#    local_unit
-#    unit_private_address
-#    unit_public_address
-# 3. Use tags to control when each task is executed. The tags list should
-#    contain one or more hook names.
-
 - hosts: all
   tasks:
-
-    - name: Install required packages.
-      apt: pkg={{ item }} state=latest update_cache=yes
-      with_items:
-        - docker.io
-      when: latest == false
+    - name: install or upgrade
+      include: install-or-upgrade.yaml
       tags:
         - install
         - upgrade-charm
 
-    - name: Install required packages from upstream
-      include: upstream-docker.yaml
-      when: latest == true
+    - name: config changed
+      include: config-changed.yaml
       tags:
-        - install
-        - upgrade-charm
-
-
-    - name: Add Docker Group
-      group: name=docker state=present
-      tags:
-        - install
-        - upgrade-charm
-
-    - name: Add ubuntu to Docker group
-      user: name=ubuntu state=present groups="docker"
-      tags:
-        - install
+        - config-changed

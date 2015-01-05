@@ -1,0 +1,6 @@
+---
+- name: Add Docker Group
+  group: name=docker state=present
+
+- name: Add ubuntu to Docker group
+  user: name=ubuntu state=present groups="docker"
