@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+
+import amulet
+import requests
+import unittest
+
+
+seconds=1100
+
+
+class TestDeployment(unittest.TestCase):
+    """ This class creates a unit test style deployment for unit testing. """
+    @classmethod
+    def setUpClass(self):
+        """ This method is run once at class creation. """
+        self.deployment = amulet.Deployment(series='trusty')
+
+        self.deployment.add('docker')
+
+        try:
+            self.deployment.setup(timeout=seconds)
+            self.deployment.sentry.wait()
+        except amulet.helpers.TimeoutError:
+            message = 'The environment did not set up in %d seconds.' % seconds
+            amulet.raise_status(amulet.SKIP, msg=message)
+        except:
+            raise
+        self.docker_unit = self.deployment.sentry.unit['docker/0']
+
+    def test_docker_1(self):
+        """ Check if the docker binary is installed. """
+        stat = self.docker_unit.file_stat('/usr/bin/docker')
+        if not stat:
+            amulet.raise_status(amulet.FAIL, msg='Docker binary missing!')
+       
+    def test_docker_info(self):
+        """ Get the Docker information """
+        output, code = self.docker_unit.run('docker info')
+        print(output)
+        if code != 0:
+            message = 'The docker info command failed with %d' % code
+            amulet.raise_status(amulet.FAIL, msg=message)
+
+    def test_docker_busybox(self):
+        """ Pull down the busybox container and run.""" 
+        command = 'docker pull busybox'
+        output, code = self.docker_unit.run(command)
+        print(output)
+        if code != 0:
+            if output.find('latest not found') != -1:
+                message = 'Could not pull the busybox docker container!'
+                amulet.raise_status(amulet.FAIL, msg=message)
+        command = 'docker run busybox echo hello world'
+        output, code = self.docker_unit.run(command)
+        print(output)
+        if code != -0:
+           message = 'Could not run echo on the busybox container.'
+           amulet.raise_status(amulet.FAIL, msg=message)
+        command = 'docker rmi -f busybox'
+        output, code = self.docker_unit.run(command)
+        print(output)
+        if code != -0:
+            message = 'Could not delete the busybox container.'
+            amulet.raise_status(amulet.FAIL, msg=message)
+
+if __name__ == '__main__':
+    unittest.main()
