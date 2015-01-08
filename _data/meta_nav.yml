@@ -1,8 +1,8 @@
 - title: Building the Documentation
-  url: meta/build.html
+  url: /docker-charm/meta/build.html
 
 - title: Adding a Page
-  url: meta/page.html
+  url: /docker-charm/meta/page.html
 
 - title: Adjusting Navigation
-  url: meta/navigation.html
+  url: /docker-charm/meta/navigation.html

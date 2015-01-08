@@ -1,11 +1,11 @@
 - title: Contributing
-  url: dev/contributing.html
+  url: /docker-charm/dev/contributing.html
 
 - title: Ansible Patterns
-  url: dev/ansible-patterns.html
+  url: /docker-charm/dev/ansible-patterns.html
 
 - title: Extending Relationships
-  url: dev/extending-relationships.html
+  url: /docker-charm/dev/extending-relationships.html
 
 - title: Doc Workflow
-  url: dev/doc-author-workflow.html
+  url: /docker-charm/dev/doc-author-workflow.html
