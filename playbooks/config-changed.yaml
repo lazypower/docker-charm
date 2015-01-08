@@ -1,15 +1,7 @@
 ---
-- name: check for docker.io
-  shell: "dpkg -l docker.io | grep docker.io | cut -d' '  -f1"
-  register: universe_check
 
-- name: check for lxc-docker
-  shell: "dpkg -l lxc-docker | grep lxc-docker | cut -d' '  -f1"
-  register: latest_check
-
-- set_fact:
-    universe_installed: "{{universe_check.stdout == 'ii'}}"
-    latest_installed: "{{latest_check.stdout == 'ii'}}"
+- name: Check installation status
+  include: installation-status.yaml
 
 - name: enforce latest docker
   when: latest == true and latest_installed == 'False'
