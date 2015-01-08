@@ -1,11 +1,11 @@
 - title: Contributing
-  url: /dev/contributing.html
+  url: dev/contributing.html
 
 - title: Ansible Patterns
-  url: /dev/ansible-patterns.html
+  url: dev/ansible-patterns.html
 
 - title: Extending Relationships
-  url: /dev/extending-relationships.html
+  url: dev/extending-relationships.html
 
 - title: Doc Workflow
-  url: /dev/doc-author-workflow.html
+  url: dev/doc-author-workflow.html

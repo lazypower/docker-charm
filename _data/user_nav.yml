@@ -1,14 +1,14 @@
 - title: Getting Started
-  url: /user/getting-started.html
+  url: user/getting-started.html
 
 - title: Configuration
-  url: /user/configuration.html
+  url: user/configuration.html
 
 - title: Deploying Containers
-  url: /user/deploying-containers.html
+  url: user/deploying-containers.html
 
 - title: Maintenance
-  url: /user/maintenance.html
+  url: user/maintenance.html
 
 - title: FAQ
-  url: /user/faq.html
+  url: user/faq.html
