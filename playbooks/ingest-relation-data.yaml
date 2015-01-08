@@ -1,0 +1,34 @@
+---
+# Primary concern is handling data being sent over the wire from subordinate services
+# such as the flannel-docker charm.
+
+# Read and scrub data for use
+- name: Check Installation Status
+  include: installation-status.yaml
+
+- name: Receive Relationship Data - flannel-subnet
+  shell: relation-get flannel-subnet
+  register: flannel-subnet
+
+- name: Receive Relationship Data - flannel-mtu
+  shell: relation-get flannel-mtu
+  register: flannel-mtu
+
+- set_fact:
+    flannel-mtu: "{{ flannel-mtu.stdout }}"
+    flannel-subnet: "{{ flannel-subnet.stdout }}"
+
+
+- name: Cache flannel-subnet
+  shell: echo "{{ flannel-subnet }} >> .flannel-subnet"
+  args:
+    chdir: "{{ charm_dir }}"
+    creates: .flannel-subnet
+
+- name: Cache flannel-mtu
+  shell: echo "{{ flannel-mtu }} >> .flannel-mtu"
+  args:
+    chdir: "{{ charm_dir }}"
+    creates: .flannel-mtu
+
+
