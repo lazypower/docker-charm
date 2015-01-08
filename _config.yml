@@ -1,4 +1,6 @@
 keep_files: ['css', 'js']
+include: ['_pages']
+relative_permalinks: false
 timezone: America/New_York
 encoding: utf-8
 product: Docker
