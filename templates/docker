@@ -11,13 +11,4 @@
   DOCKER_OPTS="{{ docker_opts }} "
 {% endif %}
 
-{% if http_proxy %}
-  # If you need Docker to use an HTTP proxy, it can also be specified here.
-  export http_proxy="http://127.0.0.1:3128/"
-{% endif %}
-
-{% if tmp_dir %}
-  # This is also a handy place to tweak where Docker's temporary files go.
-  export TMPDIR="/mnt/bigdrive/docker-tmp"
-{% endif %}
 
