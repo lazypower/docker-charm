@@ -1,0 +1,29 @@
+- title: Getting started
+  url: https://jujucharms.com/docs/getting-started
+
+- title: Using Juju
+  url: https://jujucharms.com/docs/charms
+
+- title: Deploying services
+  url: https://jujucharms.com/docs/charms-deploying
+
+- title: Using constraints
+  url: https://jujucharms.com/docs/charms-constraints
+
+- title: Service configuration
+  url: https://jujucharms.com/docs/charms-config
+
+- title: Service relationships
+  url: https://jujucharms.com/docs/charms-relations
+
+- title: Destroying services
+  url: https://jujucharms.com/docs/charms-destroy
+
+- title: Managing environments
+  url: https://jujucharms.com/docs/charms-environments
+
+- title: Using bundles
+  url: https://jujucharms.com/docs/charms-bundles
+
+- title: Manage Juju with the GUI
+  url: https://jujucharms.com/docs/howto-gui-management

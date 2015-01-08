@@ -1,0 +1,6 @@
+.venv
+*.pyc
+.pyc
+*~
+/.juju-persistent-config
+_site

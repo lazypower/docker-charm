@@ -1,0 +1,74 @@
+<!-- Fork Me Github Ribbon -->
+<a href="https://github.com/{{ site.repository }}"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
+
+        <!-- Navigation Menu -->
+        <nav class="menu_main">
+
+          <div class="navbar yamm navbar-default">
+
+            <div class="container">
+              <div class="navbar-header">
+                <div class="navbar-toggle .navbar-collapse .pull-right " data-toggle="collapse" data-target="#navbar-collapse-1"  > <span>Menu</span>
+                  <button type="button" > <i class="fa fa-bars"></i></button>
+                </div>
+              </div>
+
+              <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
+
+                <ul class="nav navbar-nav">
+
+                  <li class="dropdown yamm-fw"><a href="index.html" class="active">Home</a></li>
+
+                  <li class="dropdown yamm-fw"> <a href="#" data-toggle="dropdown" class="dropdown-toggle">Juju Charms</a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <div class="yamm-content">
+                          <div class="row">
+
+                            <ul class="col-sm-6 col-md-4 list-unstyled two">
+                              <li>
+                                <p>Juju Solutions</p>
+                              </li>
+                              {% for link in site.data.jujucharms_solutionnav %}
+                              <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i>{{ link.title }}</a></li>
+                              {% endfor %}
+                            </ul>
+
+                            <ul class="col-sm-6 col-md-4 list-unstyled two">
+                              <li>
+                                <p>User Documentation</p>
+                              </li>
+                              {% for link in site.data.jujucharms_usernav %}
+                                <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i>{{ link.title }}</a></li>
+                              {% endfor %}
+                            </ul>
+
+                            <ul class="col-sm-6 col-md-4 list-unstyled two">
+                              <li>
+                                <p>Developer Documentation</p>
+                              </li>
+                              {% for link in site.data.jujucharms_devnav %}
+                                <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i>{{ link.title }}</a></li>
+                              {% endfor %}
+                            </ul>
+
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ site.product }}</a>
+                    <ul class="dropdown-menu" role="menu">
+                      {% for link in site.data.product_nav %}
+                        <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i>{{ link.title }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+
+        </nav><!-- end Navigation Menu -->

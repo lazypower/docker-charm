@@ -1,0 +1,23 @@
+- title: Getting started
+  url: https://jujucharms.com/docs/authors-intro
+
+- title: Components of a charm
+  url: https://jujucharms.com/docs/authors-charm-components
+
+- title: Charm hooks
+  url: https://jujucharms.com/docs/authors-charm-hooks
+
+- title: Config.yaml
+  url: https://jujucharms.com/docs/authors-charm-config
+
+- title: Charm walkthrough
+  url: https://jujucharms.com/docs/authors-charm-writing
+
+- title: Hook Errors
+  url: https://jujucharms.com/docs/authors-hook-errors
+
+- title: Hook Debugging
+  url: https://jujucharms.com/docs/authors-hook-debug
+
+- title: Charm Testing
+  url: https://jujucharms.com/docs/authors-testing

@@ -1,0 +1,3 @@
+
+        <h1>{{ page.title }}</h1>
+        <div class="pagenation">&nbsp;<a href="/">Home</a> {% for item in page.crumbs %}<i>/</i> <a href="/{{item}}.html">{{item}}</a> {% endfor %} </div>

@@ -1,0 +1,142 @@
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-gb" class="no-js"> <!--<![endif]-->
+
+<head>
+  <title>Juju Charm Documentation for {{ site.product }}</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="keywords" content="{{ site.keywords }}" />
+  <meta name="description" content="Charm Documentation for {{ site.product}}" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="images/favicon.ico">
+
+  <!-- this styles only adds some repairs on idevices  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Dancing+Script:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- ######### CSS STYLES ######### -->
+
+  <link rel="stylesheet" href="css/reset.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <!-- font awesome icons -->
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+  <!-- simple line icons -->
+  <link rel="stylesheet" type="text/css" href="css/simpleline-icons/simple-line-icons.css" media="screen" />
+
+  <!-- animations -->
+  <link href="js/animations/css/animations.min.css" rel="stylesheet" type="text/css" media="all" />
+
+  <!-- responsive devices styles -->
+  <link rel="stylesheet" media="screen" href="css/responsive-leyouts.css" type="text/css" />
+
+  <!-- shortcodes -->
+  <link rel="stylesheet" media="screen" href="css/shortcodes.css" type="text/css" />
+
+  <!-- just remove the below comments witch color skin you want to use -->
+  <link rel="stylesheet" href="css/colors/blue.css" />
+
+
+  <!-- mega menu -->
+  <link href="js/mainmenu/bootstrap.min.css" rel="stylesheet">
+  <link href="js/mainmenu/menu.css" rel="stylesheet">
+
+
+  <!-- cubeportfolio -->
+  <link rel="stylesheet" type="text/css" href="js/cubeportfolio/cubeportfolio.min.css">
+
+  <!-- accordion -->
+  <link rel="stylesheet" type="text/css" href="js/accordion/style.css" />
+
+  <!-- tabs -->
+  <link rel="stylesheet" type="text/css" href="js/tabs/assets/css/responsive-tabs.css">
+  <link rel="stylesheet" type="text/css" href="js/tabs/assets/css/responsive-tabs2.css">
+  <link rel="stylesheet" type="text/css" href="js/tabs/assets/css/responsive-tabs3.css">
+</head>
+
+<body>
+
+  <div class="site_wrapper">
+
+    <header class="header innerpages">
+
+      <div class="container">
+
+        <!-- Logo -->
+        <div class="logo"><a href="index.html" id="logo"></a></div>
+        {% include modules/topnav.html %}
+      </div>
+    </header>
+
+
+    <div class="clearfix margin_top10"></div>
+
+    <div class="page_title2">
+      <div class="container">
+        {% include modules/breadcrumbs.html %}
+      </div>
+    </div><!-- end page title -->
+
+    <div class="clearfix"></div>
+
+    <div class="content_fullwidth less2">
+      <div class="container">
+
+        <!-- left sidebar starts -->
+        <div class="left_sidebar">
+          {% include modules/sidebar.html %}
+        </div><!-- end left sidebar -->
+
+        <div class="content_right">
+          {{ content }}
+        </div><!-- end content right side -->
+
+      </div>
+    </div><!-- end content area -->
+
+    <div class="clearfix marb12"></div>
+
+<!-- place holder
+    <footer class="footer">
+
+    </footer>
+-->
+
+    <a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
+
+
+  </div>
+
+  <!-- ######### JS FILES ######### -->
+  <!-- get jQuery from the google apis -->
+  <script type="text/javascript" src="js/universal/jquery.js"></script>
+
+  <!-- mega menu -->
+  <script src="js/mainmenu/bootstrap.min.js"></script>
+  <script src="js/mainmenu/customeUI.js"></script>
+
+  <!-- scroll up -->
+  <script src="js/scrolltotop/totop.js" type="text/javascript"></script>
+
+  <!-- sticky menu -->
+  <script type="text/javascript" src="js/mainmenu/sticky-main.js"></script>
+  <script type="text/javascript" src="js/mainmenu/modernizr.custom.75180.js"></script>
+
+
+  </body>
+  </html>

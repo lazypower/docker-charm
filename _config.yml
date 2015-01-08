@@ -1,0 +1,8 @@
+keep_files: ['css', 'js']
+timezone: America/New_York
+encoding: utf-8
+product: Docker
+keywords: juju, juju charms, docker
+analytics_id: UA-XXX
+repository: chuckbutler/docker-charm
+forkme_enabled: true
