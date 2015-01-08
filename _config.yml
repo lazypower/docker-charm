@@ -8,3 +8,4 @@ keywords: juju, juju charms, docker
 analytics_id: UA-XXX
 repository: chuckbutler/docker-charm
 forkme_enabled: true
+url: http://chuckbutler.github.io/docker-charm
