@@ -4,5 +4,5 @@ title: Doc Pages
 crumbs:
 - Meta
 - Navigation
-permalink: /dev/meta-page.html
+permalink: /meta/page.html
 ---
