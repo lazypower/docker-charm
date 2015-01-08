@@ -6,27 +6,26 @@
 - name: Check Installation Status
   include: installation-status.yaml
 
-- name: Receive Relationship Data - flannel-subnet
+- name: Receive Relationship Data subnet
   shell: relation-get flannel-subnet
-  register: flannel-subnet
+  register: flannel_subnet
 
-- name: Receive Relationship Data - flannel-mtu
+- name: Receive Relationship Data mtu
   shell: relation-get flannel-mtu
-  register: flannel-mtu
+  register: flannel_mtu
 
 - set_fact:
-    flannel-mtu: "{{ flannel-mtu.stdout }}"
-    flannel-subnet: "{{ flannel-subnet.stdout }}"
+    flannel_mtu: "{{ flannel_mtu.stdout }}"
+    flannel_subnet: "{{ flannel_subnet.stdout }}"
 
-
-- name: Cache flannel-subnet
-  shell: echo "{{ flannel-subnet }} >> .flannel-subnet"
+- name: Cache network subnet
+  shell: echo "{{ flannel_subnet }} >> .flannel_subnet"
   args:
     chdir: "{{ charm_dir }}"
     creates: .flannel-subnet
 
-- name: Cache flannel-mtu
-  shell: echo "{{ flannel-mtu }} >> .flannel-mtu"
+- name: Cache network mtu
+  shell: echo "{{ flannel_mtu }} >> .flannel-mtu"
   args:
     chdir: "{{ charm_dir }}"
     creates: .flannel-mtu
