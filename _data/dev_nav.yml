@@ -3,9 +3,3 @@
 
 - title: Ansible Patterns
   url: /docker-charm/dev/ansible-patterns.html
-
-- title: Extending Relationships
-  url: /docker-charm/dev/extending-relationships.html
-
-- title: Doc Workflow
-  url: /docker-charm/dev/doc-author-workflow.html
