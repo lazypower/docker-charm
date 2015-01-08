@@ -11,7 +11,8 @@
       tags:
         - config-changed
 
-    - name: Docker Host Relation Changed
+    - name: Docker Network Relation Changed
       include: subordinate-actions.yaml
       tags:
-        - docker-host-relation-changed
+        - network-relation-changed
+
