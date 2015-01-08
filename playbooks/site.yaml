@@ -10,3 +10,8 @@
       include: config-changed.yaml
       tags:
         - config-changed
+
+    - name: Docker Host Relation Changed
+      include: subordinate-actions.yaml
+      tags:
+        - docker-host-relation-changed
