@@ -4,7 +4,8 @@ maintainer: Charles Butler <charles.butler@ubuntu.com>
 description: |
  Deploys Docker Engine, a portable, lightweight runtime and packaging tool.
 tags:
-  - misc
+  - ops
+  - application_development
 subordinate: false
 provides:
   docker-containers:
