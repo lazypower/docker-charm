@@ -5,5 +5,5 @@
             {% if page.category %}
                 <i>/</i> <a href="{{ site.url }}/{{ page.category | downcase | replace: ' ', '-' }}.html">{{ page.category }}</a>
             {% endif %}
-            <i>/</i> <a href="{{ site.url }}/{{ page.title | downcase | replace: ' ', '-' }}.html">{{ page.title }}</a>
+            <i>/</i> <a href="{{ site.url }}{{ page.permalink }}">{{ page.title }}</a>
         </div>
