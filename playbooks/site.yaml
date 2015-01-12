@@ -1,6 +1,10 @@
 - hosts: all
   tasks:
-    - name: install or upgrade
+
+      - name: Check Installation Status
+      include: installation-status.yaml
+
+      - name: install or upgrade
       include: install-or-upgrade.yaml
       tags:
         - install

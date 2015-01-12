@@ -2,12 +2,29 @@
 # Cache the fact data for later config updates outside of the relationship context
 # If we modify docker defaults later, the data is lost without it being cached.
 
-- name: Check Installation Status
-  include: installation-status.yaml
+- name: Receive Relationship Data subnet
+  shell: relation-get flannel-subnet
+  register: flannel_subnet
 
-- name: Ingest Relation Data
-  include: ingest-relation-data.yaml
+- name: Receive Relationship Data mtu
+  shell: relation-get flannel-mtu
+  register: flannel_mtu
 
+- set_fact:
+    flannel_mtu: "{{ flannel_mtu.stdout }}"
+    flannel_subnet: "{{ flannel_subnet.stdout }}"
+
+- name: Cache network subnet
+  shell: echo "{{ flannel_subnet }} >> .flannel_subnet"
+  args:
+    chdir: "{{ charm_dir }}"
+    creates: .flannel-subnet
+
+- name: Cache network mtu
+  shell: echo "{{ flannel_mtu }} >> .flannel-mtu"
+  args:
+    chdir: "{{ charm_dir }}"
+    creates: .flannel-mtu
 
 - set_fact:
     docker_opts: "--bip {{ flannel_subnet }}"
