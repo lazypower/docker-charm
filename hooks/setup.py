@@ -6,7 +6,6 @@ def pre_install():
     Do any setup required before the install hook.
     """
     install_charmhelpers()
-    #subprocess.check_call(['pip', 'install', 'path.py'])
 
 
 def install_charmhelpers():

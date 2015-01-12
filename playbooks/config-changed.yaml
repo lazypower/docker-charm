@@ -8,13 +8,13 @@
   register: latest_check
 
 - set_fact:
-    universe_installed: universe_check.stdout == 'ii'
-    latest_installed: latest_check.stdout == 'ii'
+    universe_installed: "{{universe_check.stdout == 'ii'}}"
+    latest_installed: "{{latest_check.stdout == 'ii'}}"
 
 - name: enforce latest docker
-  when: latest == true
+  when: latest == true and latest_installed == 'False'
   include: latest-docker.yaml
 
 - name: enforce universe docker
-  when: latest == false
+  when: latest == false and universe_installed == "False"
   include: universe-docker.yaml

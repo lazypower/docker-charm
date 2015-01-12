@@ -1,6 +1,6 @@
 ---
 - name: remove lxc-docker
-  shell: apt-get remove -y lxc-docker
+  apt: name=lxc-docker state=absent
   when: latest_installed
 
 - name: Remove Docker Group

@@ -1,6 +1,6 @@
 ---
 - name: remove docker.io
-  shell: apt-get remove -y docker.io
+  apt: name=docker.io state=absent
   when: universe_installed
 
 - name: Add upstream apt key

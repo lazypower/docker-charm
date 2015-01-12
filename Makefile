@@ -6,18 +6,21 @@ virtualenv: .venv/bin/python
 .venv/bin/python:
 	sudo apt-get install python-virtualenv
 	virtualenv .venv
-	.venv/bin/pip install nose flake8 mock pyyaml
+	.venv/bin/pip install nose flake8 mock pyyaml charmhelpers charm-tools ecdsa
 
 lint:
 	@.venv/bin/flake8 hooks unit_tests
-	@charm proof
+	@ansible-playbook --syntax-check playbooks/site.yaml
+	@.venv/bin/ansible-lint playbooks/site.yaml
+	@.venv/bin/charm proof
 
-test:
+unit_test: .venv/bin/python
 	@echo Starting tests...
-	@CHARM_DIR=. PYTHONPATH=./hooks .venv/bin/nosetests --nologcapture unit_tests
+	@CHARM_DIR=. PYTHONPATH=./hooks .venv/bin/nosetests -vv --nologcapture unit_tests
 
-sync-charm-helpers:
-	@.venv/bin/python scripts/charm_helpers_sync.py -c charm-helpers.yaml
+func_test:
+	@echo functional tests...
+	@juju test 
 
 clean:
 	rm -rf .venv
