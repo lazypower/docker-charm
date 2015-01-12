@@ -1,14 +1,14 @@
 - title: Getting Started
-  url: /docker-charm/user/getting-started.html
+  url: user/getting-started.html
 
 - title: Configuration
-  url: /docker-charm/user/configuration.html
+  url: user/configuration.html
 
 - title: Deploying Containers
-  url: /docker-charm/user/deploying-containers.html
+  url: user/deploying-containers.html
 
 - title: Maintenance
-  url: /docker-charm/user/maintenance.html
+  url: user/maintenance.html
 
 - title: FAQ
-  url: /docker-charm/user/faq.html
+  url: user/faq.html
