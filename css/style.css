@@ -56,6 +56,11 @@ p {
     margin-bottom: 15px;
 }
 
+.content_right ul li {
+    list-style-type: square;
+    margin-left: 20px;
+}
+
 /*----------------------------------------------------
 	SITE MAIN STRUCTURE
 ------------------------------------------------------*/
