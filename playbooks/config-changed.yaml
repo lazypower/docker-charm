@@ -1,8 +1,4 @@
 ---
-
-- name: Check installation status
-  include: installation-status.yaml
-
 - name: enforce latest docker
   when: latest == true and latest_installed == 'False'
   include: latest-docker.yaml

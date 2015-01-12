@@ -1,10 +1,13 @@
 - hosts: all
   tasks:
 
-      - name: Check Installation Status
+    - name: Check Installation Status
       include: installation-status.yaml
+      tags:
+        - config-changed
+        - network-relation-changed
 
-      - name: install or upgrade
+    - name: install or upgrade
       include: install-or-upgrade.yaml
       tags:
         - install
@@ -16,7 +19,7 @@
         - config-changed
 
     - name: Docker Network Relation Changed
-      include: subordinate-actions.yaml
+      include: network-relation-changed.yaml
       tags:
         - network-relation-changed
 
