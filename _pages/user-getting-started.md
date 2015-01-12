@@ -67,7 +67,8 @@ Once the charm has been deployed - you can start to interface with docker right 
 
 The Ubuntu user has direct access to the `docker` command, and can be used for any of
 the docker administrative tasks, such as viewing running processes or even running
-new containers, and doing image management.
+new containers, and doing image management. More on this in the
+[Deploying Containers]({{ site.url}}/user/deploying-containers.html) Documentation.
 
 You may do this via `juju run` or via `juju ssh docker/0`. You can learn more about these
 commands on the [working with units](https://jujucharms.com/docs/charms-working-with-units)
