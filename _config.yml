@@ -5,7 +5,7 @@ timezone: America/New_York
 encoding: utf-8
 product: Docker
 keywords: juju, juju charms, docker
-analytics_id: UA-XXX
+analytics_id: UA-51016932-2
 repository: chuckbutler/docker-charm
 forkme_enabled: true
 url: http://chuckbutler.github.io/docker-charm
