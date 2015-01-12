@@ -1,3 +1,7 @@
 
         <h1>{{ page.title }}</h1>
-        <div class="pagenation">&nbsp;<a href="{{ site.url }}">Home</a> {% for item in page.crumbs %}<i>/</i> <a href="{{ site.url }}/{{item}}.html">{{item}}</a> {% endfor %} </div>
+        <div class="pagenation">
+            &nbsp;<a href="{{ site.url }}">Home</a>
+            <i>/</i> <a href="{{ site.url }}/{{ page.category | downcase | replace: ' ', '-' }}.html">{{ page.category }}</a>
+            <i>/</i> <a href="{{ site.url }}/{{ page.title | downcase | replace: ' ', '-' }}.html">{{ page.title }}</a>
+        </div>
