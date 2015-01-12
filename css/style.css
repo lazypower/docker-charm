@@ -1,6 +1,8 @@
 /*-------------------------------------------------------
 [Table of contents]
 
+i. Typography Hax
+
 1. Header
 	+ logo
 	+ top navigation
@@ -35,6 +37,24 @@
 
 --------------------------------------------------------*/
 
+
+/* -----------------------------------------------------
+   Typography Hax 
+   -----------------------------------------------------*/
+
+h3 {
+    margin-top: 20px;
+}
+
+/* Override the Code element from bootstrap */
+code {
+    color: #000 !important;
+}
+
+p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 
 /*----------------------------------------------------
 	SITE MAIN STRUCTURE
