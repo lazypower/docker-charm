@@ -56,6 +56,10 @@
   <link href="{{ site.url }}/js/mainmenu/bootstrap.min.css" rel="stylesheet">
   <link href="{{ site.url }}/js/mainmenu/menu.css" rel="stylesheet">
 
+  {% if site.analytics_id %}
+     {% include modules/analytics.html %}
+  {% endif %}
+
 </head>
 
 <body>
