@@ -2,7 +2,7 @@
             <div class="sidebar_title"><h4>User <i>Docs</i></h4></div>
             <ul class="arrows_list1">
               {% for link in site.data.user_nav %}
-                <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></li>
+                <li><a href="{{ site.url}}/{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></li>
               {% endfor %}
             </ul>
             <ul class="arrows_list1">
@@ -16,7 +16,7 @@
             <div class="sidebar_title"><h4>Developer <i>Docs</i></h4></div>
             <ul class="arrows_list1">
             {% for link in site.data.dev_nav %}
-              <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></li>
+                <li><a href="{{ site.url }}/{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></li>
             {% endfor %}
             </ul>
           </div><!-- end section -->
@@ -29,7 +29,7 @@
             <div class="sidebar_title"><h4>Meta <i>Docs</i></h4></div>
             <ul class="arrows_list1">
               {% for link in site.data.meta_nav %}
-              <li><a href="{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></li>
+                <li><a href="{{ site.url }}/{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></li>
               {% endfor %}
             </ul>
           </div><!-- end section -->
