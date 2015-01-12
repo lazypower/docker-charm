@@ -32,7 +32,7 @@ class TestDeployment(unittest.TestCase):
         stat = self.docker_unit.file_stat('/usr/bin/docker')
         if not stat:
             amulet.raise_status(amulet.FAIL, msg='Docker binary missing!')
-       
+
     def test_docker_info(self):
         """ Get the Docker information """
         output, code = self.docker_unit.run('docker info')
@@ -42,7 +42,7 @@ class TestDeployment(unittest.TestCase):
             amulet.raise_status(amulet.FAIL, msg=message)
 
     def test_docker_busybox(self):
-        """ Pull down the busybox container and run.""" 
+        """ Pull down the busybox container and run."""
         command = 'docker pull busybox'
         output, code = self.docker_unit.run(command)
         print(output)
@@ -54,14 +54,31 @@ class TestDeployment(unittest.TestCase):
         output, code = self.docker_unit.run(command)
         print(output)
         if code != -0:
-           message = 'Could not run echo on the busybox container.'
-           amulet.raise_status(amulet.FAIL, msg=message)
+            message = 'Could not run echo on the busybox container.'
+            amulet.raise_status(amulet.FAIL, msg=message)
         command = 'docker rmi -f busybox'
         output, code = self.docker_unit.run(command)
         print(output)
         if code != -0:
             message = 'Could not delete the busybox container.'
             amulet.raise_status(amulet.FAIL, msg=message)
+
+    def test_latest_config_option(self):
+        """ Set config option to latest and verify docker is installed """
+        self.deployment.configure('docker', {'latest': True})
+        self.deployment.sentry.wait()
+        command = 'dpkg -l lxc-docker'
+        output, code = self.docker_unit.run(command)
+        print(output)
+        if output.find('ii') == -1:
+            message = 'Could not upgrade docker to latest!'
+            amulet.raise_status(amulet.FAIL, msg=message)
+        command = 'dpkg -l docker.io'
+        output, code = self.docker_unit.run(command)
+        print(output)
+        if output.find('ii') != -1:
+            message = "Leftover docker.io package found"
+            amulet.raise_status(amulet.Fail, msg=message)
 
 if __name__ == '__main__':
     unittest.main()
