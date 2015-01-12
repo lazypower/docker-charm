@@ -1,19 +1,9 @@
 name: docker
-summary: Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications.
+summary: Deploys Docker Engine, a lightweight runtime and packaging tool.
 maintainer: Charles Butler <charles.butler@ubuntu.com>
 description: |
- Deploys Docker Engine, a portable, lightweight runtime and packaging tool. 
+  Docker is an open platform for developers and sysadmins to build, ship, and 
+  run distributed applications.
 tags:
-  # Replace "misc" with one or more whitelisted tags from this list:
-  # https://juju.ubuntu.com/docs/authors-charm-metadata.html#charm-metadata
-  - misc
+  - ops
 subordinate: false
-provides:
-  provides-relation:
-    interface: interface-name
-requires:
-  requires-relation:
-    interface: interface-name
-peers:
-  peer-relation:
-    interface: interface-name

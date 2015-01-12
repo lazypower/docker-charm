@@ -2,4 +2,6 @@ options:
   latest:
     type: boolean
     default: False
-    description: "Deploy Latest Docker from Upstream"
+    description: | 
+      If True, deploy the latest version of docker, when False (default) 
+      installs docker.io from the Ubuntu package archive."
