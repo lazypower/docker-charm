@@ -1,34 +1,29 @@
 ---
 layout: default
 title: Getting Started
-crumbs:
-  - Users
-  - Getting Started
+category: User Docs
 permalink: /user/getting-started.html
 ---
 
-# Welcome
+# Getting Started
 
-This is the documentation page for the Juju Docker Charm!
+### Deploying The Stable Charm
 
----
+> The docker charm is not presently in the charm store
+> these instructions are pending a full charm review and
+> charm-store acceptance.
 
-That was a horizontal rule
+    juju deploy cs:trusty/docker
 
-# Typography:
 
-basic text looks just like this. there's nothing really special to it.
+### Deploying The Development Charm
 
-**mix in some bold**
+    mkdir -p ~/charms/trusty
+    export JUJU_REPOSITORY=$HOME/charms
+    git clone https://github.com/chuckbutler/docker-charm.git charms/trusty/docker
+    juju deploy local:trusty/docker
 
-*italics can be fun for emphasis as well*
 
-# h1
+### Known Limitations
 
-## h2
 
-### h3
-
-#### h4
-
-##### h5
