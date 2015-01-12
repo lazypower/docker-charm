@@ -5,7 +5,7 @@ category: User Docs
 permalink: /user/getting-started.html
 ---
 
-### Deploying The Stable Charm
+# Deploying The Stable Charm
 
 > The docker charm is not presently in the charm store.
 > These instructions being applicable are pending a full charm review and acceptance to
@@ -30,7 +30,7 @@ has been fully deployed it list an agent state of 'started' in the `juju status`
 You can remote into the docker unit and begin deploying containers immediately following the
 [Post installation instructions](#post-installation-instructions).
 
-### Deploying The Development Charm
+# Deploying The Development Charm
 
 > **Warning:** Deploying the Development Focus is not guaranteed to be stable - and not recommended
 > for production deployments!
@@ -48,7 +48,7 @@ in the juju charm store*.
 You can remote into the docker unit and begin deploying containers immediately following the
 [Post installation instructions](#post-installation-instructions).
 
-### Unit Constraints
+# Unit Constraints
 
 The docker charm is very light weight and has been tested on several providers smallest units
 without any issue. The performance of the overall stack will vary depending on the workload, and
@@ -61,7 +61,7 @@ you are encouraged to view the [Using Constraints](https://jujucharms.com/docs/c
 - Digital Ocean 512mb droplets
 
 
-### Post Installation Instructions
+# Post Installation Instructions
 
 Once the charm has been deployed - you can start to interface with docker right away.
 
@@ -73,7 +73,7 @@ You may do this via `juju run` or via `juju ssh docker/0`. You can learn more ab
 commands on the [working with units](https://jujucharms.com/docs/charms-working-with-units)
 docpage on jujucharms.com.
 
-### Known Limitations
+# Known Limitations
 
 #### AWS t1.micro
 
@@ -101,8 +101,8 @@ of deployments on them. Thus it is not recommended.
 [Deploying Containers]({{site.url}}/user/deploying-containers.html) docpage.
 
  There are other ways to enable cross-host communication using
- [Supporting Charms](http://github.com/chuckbutler/flannel-docker-charm) that will enable a VXLan
- - but are outside the scope of these help pages.
+ [Supporting Charms](http://github.com/chuckbutler/flannel-docker-charm) that will enable an
+ overlay-network - but are outside the scope of these help pages.
 
 #### Offline Environments
 
