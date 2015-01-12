@@ -35,9 +35,11 @@
 
 - name: Bring Docker Bridge offline
   shell: ifconfig docker0 down
+  ignore_errors: yes
 
 - name: Delete Docker Bridge
   shell: brctl delbr docker0
+  ignore_errors: yes
 
 - name: Restart Docker
   service: name=docker state=restarted
