@@ -23,14 +23,4 @@
 
           <div class="clearfix margin_top4"></div>
 
-          {% if site.data.meta_nav %}
-          <div class="sidebar_widget">
 
-            <div class="sidebar_title"><h4>Meta <i>Docs</i></h4></div>
-            <ul class="arrows_list1">
-              {% for link in site.data.meta_nav %}
-                <li><a href="{{ site.url }}/{{ link.url }}"><i class="fa fa-angle-right"></i> {{ link.title }}</a></li>
-              {% endfor %}
-            </ul>
-          </div><!-- end section -->
-          {% endif %}
