@@ -1,5 +1,5 @@
 - title: Contributing
-  url: /docker-charm/dev/contributing.html
+  url: dev/contributing.html
 
 - title: Ansible Patterns
-  url: /docker-charm/dev/ansible-patterns.html
+  url: dev/ansible-patterns.html
