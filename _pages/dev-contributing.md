@@ -5,7 +5,7 @@ category: Developer Docs
 permalink: /dev/contributing.html
 ---
 
-Contributions are welcome, in any form. Whether that be Bugs, BugFixes, Documentation, or Features.
+#### Contributions are welcome, in any form. Whether that be Bugs, BugFixes, Documentation, or Features.
 
 ### Submitting a bug
 
@@ -45,11 +45,12 @@ The following checklist will help developers not familiar with the fork and pull
 3. Checkout your topic branch with `git checkout -b my-awesome-bugfix`
 4. Hack away at your feature/bugfix
 5. Validate your bugfix if possible in the amulet test(s) so we dont reintroduce it later.
+6. Validate your code meets guidelines by passing lint tests `make lint`
 6. Commit code `git commit -a -m 'i did all this work to fix #32'`
 7. Push your branch to your forks remote branch `git push origin my-awesome-bugfix`
 8. Create the [Pull Request](https://help.github.com/articles/using-pull-requests/#initiating-the-pull-request)
 9. Await Code Review
-10. Rejoyce when Pull Request is accepted
+10. Rejoice when Pull Request is accepted
 
 ### Submitting a Feature
 
@@ -61,7 +62,7 @@ We actually keep the docs in the same repository as the charm code, in a separat
 
 ### Submitting Documentation
 
-The documentation is a static site generated from markdown in the `gh-pages` repository. With this in mind, we can version large swaths of documentation by simply changing permalinks, and then updating the navigation index. This allows us to be agile with our documentation, and keep it fresh and up to date without much hassle. 
+The documentation is a static site generated from markdown in the `gh-pages` branch. With this in mind, we can version large swaths of documentation by simply changing permalinks, and then updating the navigation index. This allows us to be agile with our documentation, and keep it fresh and up to date without much hassle.
 
 
 1. [Fork the repository](https://help.github.com/articles/fork-a-repo/)
@@ -73,8 +74,10 @@ The documentation is a static site generated from markdown in the `gh-pages` rep
 7. Push your branch to your forks remote branch `git push origin french-localization`
 8. Create the [Pull Request](https://help.github.com/articles/using-pull-requests/#initiating-the-pull-request) and target the `gh-pages` branch
 9. Await Peer Review
-10. Rejoyce when Pull Request is accepted
+10. Rejoice when Pull Request is accepted
 
+
+> **If you are submitting a Locale translation** - we will need to adjust the core template to support your language - and appreciate your efforts and will get it included as quickly as possible. Thanks in advance for your patience!
 
 
 ##### A note about documentation pages
@@ -101,5 +104,5 @@ Each section of the documentation is generated from data stored/warehoused in ya
     - title: Ansible Patterns
       url: dev/ansible-patterns.html
 
-These yaml arrays are parsed to build the navigation. If you add a topic page, ensure you've added it to the navigation. If you are submitting a Locale translation - we will need to adjust the core template to support your language - and appreciate your efforts and will get it included as quickly as possible. Thanks in advance for your patience!
+These yaml arrays are parsed to build the navigation. If you add a topic page, ensure you've added it to the navigation.
 
