@@ -1,0 +1,68 @@
+---
+# Cache the fact data for later config updates outside of the relationship context
+# If we modify docker defaults later, the data is lost without it being cached.
+
+- name: Receive Relationship Data subnet
+  shell: relation-get flannel-subnet
+  register: flannel_subnet
+
+- name: Receive Relationship Data mtu
+  shell: relation-get flannel-mtu
+  register: flannel_mtu
+
+- set_fact:
+    flannel_mtu: "{{ flannel_mtu.stdout }}"
+    flannel_subnet: "{{ flannel_subnet.stdout }}"
+
+- name: Cache network subnet
+  shell: echo "{{ flannel_subnet }} >> .flannel_subnet"
+  args:
+    chdir: "{{ charm_dir }}"
+    creates: .flannel-subnet
+
+- name: Cache network mtu
+  shell: echo "{{ flannel_mtu }} >> .flannel-mtu"
+  args:
+    chdir: "{{ charm_dir }}"
+    creates: .flannel-mtu
+
+- set_fact:
+    docker_opts: "--bip {{ flannel_subnet }}"
+    when: "{{ flannel_subnet != '' }}"
+
+- set_fact:
+    docker_opts: "{{ docker_opts }} --mtu {{ flannel_mtu }}"
+    when: "{{ flannel_mtu != '' }}"
+
+- name: Render docker defaults template
+  template: src=docker dest=/etc/default/docker.io
+  when: universe_installed
+
+- name: Render docker defaults template
+  template: src=docker dest=/etc/default/docker
+  when: latest_installed
+
+- name: Halt docker service
+  service: name=docker state=stopped
+  when: latest_installed
+
+- name: Halt docker service
+  service: name=docker.io state=stopped
+  when: universe_installed
+
+- name: Bring Docker Bridge offline
+  shell: ifconfig docker0 down
+  ignore_errors: yes
+
+- name: Delete Docker Bridge
+  shell: brctl delbr docker0
+  ignore_errors: yes
+
+- name: Restart Docker
+  service: name=docker state=restarted
+  when: latest_installed
+
+- name: Restart Docker
+  service: name=docker.io state=restarted
+  when: universe_installed
+

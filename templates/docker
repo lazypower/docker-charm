@@ -1,0 +1,14 @@
+# !! WARNING !! THIS FILE IS MANAGED BY JUJU
+# DO NOT EDIT BY HAND, AS YOUR CHANGES WILL NOT BE SAVED.
+
+# Docker Upstart and SysVinit configuration file
+
+# Customize location of Docker binary (especially for development testing).
+#DOCKER="/usr/local/bin/docker"
+
+{% if docker_opts %}
+  # Use DOCKER_OPTS to modify the daemon startup options.
+  DOCKER_OPTS="{{ docker_opts }} "
+{% endif %}
+
+

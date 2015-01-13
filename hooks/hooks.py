@@ -9,6 +9,7 @@ hook_names = [
     'start',
     'stop',
     'upgrade-charm',
+    'network-relation-changed',
     ]
 
 hooks = AnsibleHooks(playbook_path='playbooks/site.yaml',
