@@ -12,7 +12,7 @@ eliminates the friction between development, QA, and production environments
 
 # Using the Docker Charm
 
-Step by step instructions on using the charm:
+Step by step instructions on using the docker charm:
 
     juju deploy cs:~hazmat/trusty/flannel
     juju deploy cs:~lazypower/trusty/docker --to 1

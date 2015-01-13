@@ -1,5 +1,5 @@
 name: docker
-summary: Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications.
+summary: Deploys Docker Engine, a lightweight runtime and packaging tool.
 maintainer: Charles Butler <charles.butler@ubuntu.com>
 description: |
  Deploys Docker Engine, a portable, lightweight runtime and packaging tool.
@@ -13,3 +13,4 @@ provides:
 requires:
   network:
     interface: overlay-network
+
