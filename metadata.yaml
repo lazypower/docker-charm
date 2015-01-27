@@ -13,4 +13,7 @@ provides:
 requires:
   network:
     interface: overlay-network
-
+    optional: true
+  logging:
+    interface: docker-socket
+    optional: true
