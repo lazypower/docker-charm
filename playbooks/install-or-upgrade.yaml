@@ -9,4 +9,4 @@
   apt: name=virtualenvwrapper state=present
 
 - name: Install docker-py
-  pip: "name=docker-py virtualenv={{ charmdir/.venv }}"
+  pip: "name=docker-py virtualenv={{ charm_dir}}/.venv"
