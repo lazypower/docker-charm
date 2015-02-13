@@ -4,13 +4,12 @@ build: virtualenv lint test
 
 virtualenv: .venv/bin/python
 .venv/bin/python:
-	sudo apt-get install python-virtualenv
+	sudo apt-get install -y  python-virtualenv
 	virtualenv .venv
-	.venv/bin/pip install nose flake8 mock pyyaml charmhelpers charm-tools ecdsa
+	.venv/bin/pip install nose flake8 mock pyyaml charmhelpers charm-tools ecdsa ansible ansible-lint
 
-lint:
+lint: .venv/bin/python
 	@.venv/bin/flake8 hooks unit_tests
-	@ansible-playbook --syntax-check playbooks/site.yaml
 	@.venv/bin/ansible-lint playbooks/site.yaml
 	@.venv/bin/charm proof
 
