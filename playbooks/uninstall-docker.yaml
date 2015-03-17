@@ -1,0 +1,9 @@
+---
+- name: remove docker.io
+  apt: name=docker.io state=absent
+  when: universe_installed
+
+- name: remove lxc-docker
+  apt: name=lxc-docker state=absent
+  when: latest_installed
+

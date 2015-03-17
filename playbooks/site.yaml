@@ -6,6 +6,7 @@
       tags:
         - config-changed
         - network-relation-changed
+        - stop
 
     - name: install or upgrade
       include: install-or-upgrade.yaml
@@ -23,3 +24,7 @@
       tags:
         - network-relation-changed
 
+    - name: Uninstall Docker
+      include: uninstall-docker.yaml
+      tags:
+        - stop
