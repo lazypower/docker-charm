@@ -1,5 +1,6 @@
 - title: Contributing
   url: dev/contributing.html
-
+- title: Design Document
+  url: dev/design-doc.html
 - title: Ansible Patterns
   url: dev/ansible-patterns.html
