@@ -2,6 +2,6 @@ options:
   latest:
     type: boolean
     default: False
-    description: | 
-      If True, deploy the latest version of docker, when False (default) 
+    description: |
+      If True, deploy the latest version of docker, when False (default)
       installs docker.io from the Ubuntu package archive."
