@@ -16,4 +16,4 @@ def install_charmhelpers():
         import charmhelpers  # noqa
     except ImportError:
         subprocess.check_call(['apt-get', 'install', '-y', 'python-pip'])
-        subprocess.check_call(['pip', 'install', 'charmhelpers'])
+        subprocess.check_call(['pip', 'install', '-e', 'git+https://github.com/whitmo/charmhelpers.git#egg=charmhelpers'])
