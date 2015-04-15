@@ -1,6 +1,10 @@
 - hosts: all
+  vars:
+    labels_yaml: /etc/docker/labels.yml
+  handlers:
+    - name: restart docker
+      service: name=docker state=restarted
   tasks:
-
     - name: Check Installation Status
       include: installation-status.yaml
       tags:
