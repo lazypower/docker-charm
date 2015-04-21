@@ -4,11 +4,15 @@
   shell: "dpkg -l docker.io | grep docker.io | cut -d' '  -f1"
   register: universe_check
 
+# Updated due to bug #24
 - name: check for lxc-docker
-  shell: "dpkg -l lxc-docker | grep lxc-docker | cut -d' '  -f1"
+  shell: "dpkg -l lxc-docker-{{version}} | grep lxc-docker | cut -d' '  -f1"
   register: latest_check
 
 - set_fact:
     universe_installed: "{{universe_check.stdout == 'ii'}}"
     latest_installed: "{{latest_check.stdout == 'ii'}}"
+
+- debug: msg="{{latest_installed}}"
+- debug: msg="{{universe_installed}}"
 
