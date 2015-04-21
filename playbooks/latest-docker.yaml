@@ -12,6 +12,6 @@
 - debug: msg="Installing latest"
 
 - name: Install required packages.
-  apt: pkg={{ item }} state=latest update_cache=yes
+  apt: name={{ item }}={{ version }} state=present update_cache=yes
   with_items:
     - lxc-docker
