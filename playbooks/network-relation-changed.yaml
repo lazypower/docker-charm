@@ -34,13 +34,13 @@
     docker_opts: "{{ docker_opts }} --mtu {{ flannel_mtu }}"
     when: "{{ flannel_mtu != '' }}"
 
-- name: Render docker defaults template
+- name: Render docker.io defaults template
   template: src=docker dest=/etc/default/docker.io
-  when: universe_installed
+  when: universe_installed == "True" and flannel_subnet != ''
 
-- name: Render docker defaults template
+- name: Render lxc-docker defaults template
   template: src=docker dest=/etc/default/docker
-  when: latest_installed
+  when: latest_installed == "True" and flannel_subnet != ''
 
 - name: Halt docker service
   service: name=docker state=stopped
