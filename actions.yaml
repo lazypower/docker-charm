@@ -1,0 +1,101 @@
+cleanup:
+    description: |
+        **Warning** THIS IS DESTRUCTIVE **WARNING** WILL REMOVE STOPPED DATA CONTAINERS
+        Destructive action to clean up non-running/intermediate containers/images
+    params:
+        type:
+            description: "containers or images"
+            default: "images"
+    required:
+        - type
+run:
+    description: Pulls a docker container from the docker registry, and run with a restart policy
+    params:
+        name:
+            description: Name of the docker file in the registry. eg: redis
+            type: string
+            default: ""
+        ports:
+            description: array notation of ports to bind-mount to the host
+            type: string
+            default: ""
+        daemonize:
+            description:  restart policy to manage the container
+            type: boolean
+            default: True
+    required:
+        - name
+        - daemonize
+upgrade:
+    description: Cycle a running container, with a newer image.
+    params:
+        name:
+            description: UUID / Container name of the running container
+            type: string
+        image:
+            description: Name of the container image to pull and run
+            type: string
+    required:
+        - name
+        - image
+fig:
+    description: Runs a fig based deployment from filesystem/http/git
+    params:
+        yaml:
+            description: http / filesystem pointer to a YAML file to read into fig
+            type: string
+        repository:
+            description: Git repository containing `fig.yml`
+            type: string
+stop:
+    description: Stops a docker container
+    params:
+        name:
+            description: UUID / Container name
+            type: string
+    required:
+        - name
+commit:
+    description: Create a new image from a container's changes
+    params:
+        author:
+            description: Author (e.g.,"John Hannibal Smith <hannibal@a-team.com")
+            type: string
+        message:
+            description: Commit message
+            type: string
+        pause:
+            description: Pause container during commit
+            type: boolean
+        name:
+            description: UUID / Container name
+            type: string
+    required:
+        - name
+        - pause
+        - message
+log:
+    description: Return the logs from a docker container
+    params:
+        name:
+            description: UUID / Container name
+            type: string
+    required:
+        - name
+pause:
+    description: Pause a running docker container
+    params:
+        name:
+            description: UUID / Container name
+            type: string
+    required:
+        - name
+unpause:
+    description: UnPause a Paused docker container
+    params:
+        name:
+            description: UUID / Container name
+            type: string
+    required:
+        - name
+
