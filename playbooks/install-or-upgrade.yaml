@@ -1,3 +1,4 @@
+
 ---
 - name: Add Docker Group
   group: name=docker state=present
@@ -10,12 +11,3 @@
 
 - name: Install docker-py
   pip: "name=docker-py virtualenv={{ charm_dir}}/.venv"
-
-- set_fact:
-    _labels_:
-      docker_labels:
-        - "{{ service_name }}"
-        - "{{ local_unit }}"
-
-- name: write juju info yaml for later runs
-  copy: "dest={{ labels_yaml }} content='{{ _labels_ | to_nice_yaml(explicit_start=True) }}'"
