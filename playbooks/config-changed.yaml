@@ -7,11 +7,4 @@
   when: latest == false and universe_installed == "False"
   include: universe-docker.yaml
 
-- include_vars: /etc/docker/labels.yml
 
-- name: enable labels
-  lineinfile: dest=/etc/default/docker
-              backup=yes
-              line='DOCKER_OPTS="{{ docker_labels | join(\' --label \') }}"'
-  notify:
-    - restart docker
