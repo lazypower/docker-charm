@@ -4,6 +4,5 @@ import sys
 
 if __name__ == "__main__":
     setup.pre_install()
-
-    from hooks import hooks
-    hooks.execute(sys.argv)
+    import hooks
+    hooks.main()
