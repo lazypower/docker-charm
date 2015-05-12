@@ -5,9 +5,3 @@
 
 - name: Add ubuntu to Docker group
   user: name=ubuntu state=present groups="docker"
-
-- name: install virtualenv
-  apt: name=virtualenvwrapper state=present
-
-- name: Install docker-py
-  pip: "name=docker-py virtualenv={{ charm_dir}}/.venv"

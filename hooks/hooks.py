@@ -1,30 +1,15 @@
 #!/usr/bin/env python
-from charmhelpers.contrib.ansible import AnsibleHooks
-from charmhelpers.contrib.ansible import install_ansible_support
+from ansiblecharm.runner import AnsibleHooks
 import sys
 import os
 
-hook_names = [
-    'install',
-    'config-changed',
-    'start',
-    'stop',
-    'upgrade-charm',
-    'network-relation-changed',
-    ]
 
-hooks = AnsibleHooks(playbook_path='playbooks/site.yaml',
-                     default_hooks=hook_names)
-
-
-# @hooks.hook('install', 'upgrade-charm')
-# def install():
-#     """
-#     Install or upgrade ansible.
-#     """
-#     install_ansible_support(from_ppa=True)
-
-
+def main(args=sys.argv):
+    hooks = AnsibleHooks(playbook_path='playbooks/site.yaml',
+                         hook_dir=os.path.dirname(__file__),
+                         default_hooks=['install'],
+                         modules="%s/modules" % os.enviorn['CHARM_DIR'])
+    hooks.execute(args)
 
 if __name__ == "__main__":
-    hooks.execute(sys.argv, modules="%s/modules" % os.environ['CHARM_DIR'])
+    main()
