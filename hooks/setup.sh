@@ -6,5 +6,6 @@ apt-get install -y \
     python-pip \
     git \
 
-easy_install -U pip # hacky workaround
 pip install -r hooks/python-pkgs.txt
+
+
