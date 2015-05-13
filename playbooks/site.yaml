@@ -1,9 +1,13 @@
 - hosts: all
   vars:
-    labels_yaml: /etc/docker/labels.yml
+    opts_yaml: /etc/ansible/docker-opts.yaml
   handlers:
     - name: restart docker
-      service: name=docker state=restarted
+      service: "name={{docker_version_name}} state=restarted"
+    - name: calculate docker opts
+      docker_opts: "action=read yaml={{opts_yaml}}"
+    - name: render docker defaults
+      template: "src=templates/docker-defaults dest=/etc/default/{{docker_version_name}}"
   tasks:
     - name: Check Installation Status
       include: installation-status.yaml
