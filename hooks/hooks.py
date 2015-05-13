@@ -8,7 +8,7 @@ def main(args=sys.argv):
     hooks = AnsibleHooks(playbook_path='playbooks/site.yaml',
                          hook_dir=os.path.dirname(__file__),
                          default_hooks=['install'],
-                         modules="%s/modules" % os.enviorn['CHARM_DIR'])
+                         modules="%s/modules" % os.environ['CHARM_DIR'])
     hooks.execute(args)
 
 if __name__ == "__main__":
