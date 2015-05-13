@@ -1,10 +1,12 @@
 ---
 - name: enforce latest docker
-  when: latest == true and latest_installed == 'False'
+  when: latest == true and latest_installed == "False"
   include: latest-docker.yaml
 
 - name: enforce universe docker
   when: latest == false and universe_installed == "False"
   include: universe-docker.yaml
 
-
+- name: set service name as a label
+  docker_opts: "action=add key=label val={{service_name}} yaml={{opts_yaml}}"
+  notify: Render docker defaults template
