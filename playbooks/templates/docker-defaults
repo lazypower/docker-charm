@@ -6,9 +6,7 @@
 # Customize location of Docker binary (especially for development testing).
 #DOCKER="/usr/local/bin/docker"
 
-{% if docker_opts %}
+{% if docker_daemon_opts %}
   # Use DOCKER_OPTS to modify the daemon startup options.
-  DOCKER_OPTS="{{ docker_opts }} "
+  DOCKER_OPTS="{{ docker_daemon_opts }} "
 {% endif %}
-
-

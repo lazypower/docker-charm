@@ -9,4 +9,6 @@
 
 - name: set service name as a label
   docker_opts: "action=add key=label val={{service_name}} yaml={{opts_yaml}}"
-  notify: Render docker defaults template
+  notify:
+    - calculate docker opts
+    - render docker defaults

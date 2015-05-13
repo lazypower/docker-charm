@@ -1,5 +1,4 @@
 ---
-
 - name: check for docker.io
   shell: "dpkg -l docker.io | grep docker.io | cut -d' '  -f1"
   register: universe_check
@@ -13,6 +12,10 @@
     universe_installed: "{{universe_check.stdout == 'ii'}}"
     latest_installed: "{{latest_check.stdout == 'ii'}}"
 
-- debug: msg="{{latest_installed}}"
-- debug: msg="{{universe_installed}}"
+- set_fact:
+    docker_version_name: docker
+    when: latest_installed
 
+- set_fact:
+    docker_version_name: docker.io
+    when: universe_installed
