@@ -12,6 +12,8 @@ provides:
     interface: containers
   iperf-server:
     interface: iperf
+  benchmark:
+    interface: benchmark
 requires:
   network:
     interface: overlay-network
