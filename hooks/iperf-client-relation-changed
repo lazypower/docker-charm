@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -eu
+
+status-set active "Configuring benchmark env"
+
+BENCHMARK_HOST=$(relation-get iperf-host)
+
+if [ -z $BENCHMARK_HOST ]; then
+    echo "Benchmark host not ready..."
+    exit 0
+fi
+
+echo "$BENCHMARK_HOST" > $CHARM_DIR/.benchmark_host
+
+status-set active "Ready to benchmark"

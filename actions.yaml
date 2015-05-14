@@ -1,0 +1,11 @@
+benchmark:
+  description: iPerf network benchmarking
+  params:
+    iperf-command:
+      description: argument to pass to iperf. note the host with {host}
+      type: string
+      default: "-c {host} -i 1 -t 60 -f k -y C"
+    docker:
+      description: Run the iPERF command in docker
+      type: boolean
+      default: True

@@ -11,4 +11,10 @@ options:
     description: |
       When latest = true, specify the version to install from the PPA.
       latest = false will always assume use the current stable in distro.
-
+  iperf-docker:
+      type: boolean
+      default: True
+      description: |
+        If True, will deploy the iperf network benchmarking daemon in a docker
+        container, typically to benchmark the SDN configuration applied to
+        the docker host.

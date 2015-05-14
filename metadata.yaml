@@ -10,6 +10,8 @@ subordinate: false
 provides:
   docker-containers:
     interface: containers
+  iperf-server:
+    interface: iperf
 requires:
   network:
     interface: overlay-network
@@ -17,3 +19,5 @@ requires:
   logging:
     interface: docker-socket
     optional: true
+  iperf-client:
+    interface: iperf

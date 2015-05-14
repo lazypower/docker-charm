@@ -1,0 +1,41 @@
+#!/bin/bash
+set -eux
+
+chlp benchmark-start || true
+
+RUN_ARGS=$(action-get iperf-command)
+DOCKER_BENCH=$(action-get docker)
+IPERF_SERVER=$(cat $CHARM_DIR/.benchmark_host)
+RUNSTAMP=$(date +%s)
+
+RUN_ARGS=$(echo $RUN_ARGS | sed "s/{host}/$IPERF_SERVER/")
+
+# Evaluate run arguments, fail if no arguments provided
+if [ -z "$RUN_ARGS" ]; then
+  echo "No command to pass iperf"
+  exit 1
+fi
+
+# This happens when no IPERF server has not joined, the action should implicitly fail
+if [ -z "$IPERF_SERVER" ]; then
+  status-set blocked "IPerf server not ready, did you add client <=> server relation?"
+  exit 1
+fi
+
+# Clear status messages
+status-set active
+
+# If we're benching in docker, do so
+if [[ "$DOCKER_BENCH" == "True" ]]; then
+    mkdir -p $CHARM_DIR/benchmark-logs
+    docker run -e IPERFCMD="$RUN_ARGS" -e LOG="/workspace/run-$RUNSTAMP" -v $CHARM_DIR/benchmark-logs:/workspace lazypower/iperf-runner
+    cat benchmark-logs/run-$RUNSTAMP | $CHARM_DIR/scripts/run2json.py
+    exit 0
+fi
+
+# Kick off an iperf session on the host
+mkdir -p $CHARM_DIR/benchmark-logs
+
+iperf $RUN_ARGS 1>benchmark-logs/run-$RUNSTAMP
+
+cat benchmark-logs/run-$RUNSTAMP | $CHARM_DIR/scripts/run2json.py

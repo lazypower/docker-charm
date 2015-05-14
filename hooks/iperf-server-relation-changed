@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -eu
+
+
+DOCKER_HOST=$(config-get iperf-docker)
+
+# If we are benchmarking docker - send the IP of the container
+if [[ "$DOCKER_HOST" == "True" ]]; then
+    status-set active "Configuring docker benchmark environment"
+    IPERF_SERVER_IP=$($CHARM_DIR/scripts/containers --network -i iperf)
+    if [ -z "$IPERF_SERVER_IP" ]; then
+        docker run -d -p 5001:5001 moutten/iperf
+    fi
+    relation-set iperf-host=$($CHARM_DIR/scripts/containers --network -i iperf)
+    exit 0
+else
+    service iperf stop || true
+fi
+
+status-set active "Configuring native benchmark environment"
+# If we are benchmarking the host, send the host IP
+cp $CHARM_DIR/templates/iperf.conf /etc/init/iperf.conf
+service iperf start
+relation-set iperf-host=$(unit-get private-address)
+
+status-set active "Ready to benchmark"
