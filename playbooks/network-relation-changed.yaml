@@ -27,7 +27,7 @@
     creates: .flannel-mtu
 
 - name: set subnet daemon option
-  docker_opts: action=set key=bip val="{{ flannel_subnet }}"
+  docker_opts: action=set key=bip val="{{ flannel_subnet }}" yaml="{{opts_yaml}}"
   when: flannel_subnet != ''
   notify:
     - calculate docker opts
@@ -35,7 +35,8 @@
     - restart docker
 
 - name: set subnet daemon option
-  docker_opts: action=set key=mtu val="{{ flannel_mtu }}"
+  docker_opts: action=set key=mtu val="{{ flannel_mtu }}" yaml="{{opts_yaml}}"
+
   when: flannel_mtu != ''
   notify:
     - calculate docker opts

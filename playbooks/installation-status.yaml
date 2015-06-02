@@ -14,8 +14,9 @@
 
 - set_fact:
     docker_version_name: docker
-    when: latest_installed
+  when: latest_installed == "True"
 
 - set_fact:
     docker_version_name: docker.io
-    when: universe_installed
+  when: universe_installed == "True"
+
