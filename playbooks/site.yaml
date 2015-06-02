@@ -1,6 +1,7 @@
 - hosts: all
   vars:
     opts_yaml: /etc/ansible/docker-opts.yaml
+    docker_version_name: false
   handlers:
     - name: restart docker
       service: "name={{docker_version_name}} state=restarted"
@@ -12,7 +13,6 @@
     - name: Check Installation Status
       include: installation-status.yaml
       tags:
-        - config-changed
         - network-relation-changed
         - stop
 
