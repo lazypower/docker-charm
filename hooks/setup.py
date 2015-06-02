@@ -14,13 +14,3 @@ def pre_install():
         subprocess.check_call(['hooks/setup.sh'])
         subprocess.check_call("pip install -r hooks/python-pkgs.txt",
                               shell=True)
-
-        from path import path
-
-        # temporary dev hack
-        for lib in ('src/ansiblecharm'):
-            pth = str(path(os.environ['CHARM_DIR']) / lib)
-            sys.path.append(pth)
-
-        from ansiblecharm import helpers
-        helpers.write_hosts_file()
