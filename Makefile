@@ -21,6 +21,17 @@ func_test:
 	@echo functional tests...
 	@juju test 
 
+
+release: check-path virtualenv
+	@.venv/bin/pip install git-vendor
+	@.venv/bin/git-vendor sync -d ${DOCKER_MASTER_BZR}
+
+check-path:
+ifndef DOCKER_MASTER_BZR
+	$(error DOCKER_MASTER_BZR is undefined)
+endif
+
+
 clean:
 	rm -rf .venv
 	find -name *.pyc -delete
