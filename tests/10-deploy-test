@@ -65,9 +65,10 @@ class TestDeployment(unittest.TestCase):
 
     def test_latest_config_option(self):
         """ Set config option to latest and verify docker is installed """
-        self.deployment.configure('docker', {'latest': True})
+        self.deployment.configure('docker', {'latest': True,
+                                             'version': '1.5.0'})
         self.deployment.sentry.wait()
-        command = 'dpkg -l lxc-docker'
+        command = 'dpkg -l lxc-docker-1.5.0'
         output, code = self.docker_unit.run(command)
         print(output)
         if output.find('ii') == -1:
