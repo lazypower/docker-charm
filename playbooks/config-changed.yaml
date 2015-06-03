@@ -7,6 +7,10 @@
   when: latest == false and universe_installed == "False"
   include: universe-docker.yaml
 
+# First run always seems to miss the fact, re-runs work. includ here
+# which bloats the run but resolves first run failures
+- include: installation-status.yaml
+
 - name: set service name as a label
   docker_opts: "action=add key=label val={{service_name}} yaml={{opts_yaml}}"
   notify:
