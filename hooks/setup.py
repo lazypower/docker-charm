@@ -15,5 +15,7 @@ def pre_install():
         subprocess.check_call("pip install -r hooks/python-pkgs.txt",
                               shell=True)
 
+        from path import path
+
         pth = str(path(os.environ['CHARM_DIR']) / 'src/ansiblecharm')
         sys.path.append(pth)

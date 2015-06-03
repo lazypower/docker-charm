@@ -32,16 +32,13 @@
   notify:
     - calculate docker opts
     - render docker defaults
-    - restart docker
 
 - name: set subnet daemon option
   docker_opts: action=set key=mtu val="{{ flannel_mtu }}" yaml="{{opts_yaml}}"
-
   when: flannel_mtu != ''
   notify:
     - calculate docker opts
     - render docker defaults
-    - restart docker
 
 - name: Halt docker service
   service: name={{docker_version_name}} state=stopped
@@ -53,3 +50,7 @@
 - name: Delete Docker Bridge
   shell: brctl delbr docker0
   ignore_errors: yes
+  notify:
+    - restart docker
+
+
