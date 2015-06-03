@@ -8,6 +8,7 @@ def pre_install():
     Do any setup required before the install hook.
     """
     try:
+        import charmhelpers #noqa
         import ansiblecharm  # noqa
         from path import path  # noqa
     except ImportError:
