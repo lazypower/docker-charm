@@ -9,8 +9,22 @@
   when: latest == false and universe_installed == "False"
   include: universe-docker.yaml
 
+- set_fact:
+    service_label: "service={{ service_name }}"
+    unit_label: "unit={{ local_unit }}"
+
 - name: set service name as a label
-  docker_opts: "action=add key=label val={{service_name}} yaml={{opts_yaml}}"
+  docker_opts: action=add
+               key=label val="{{ service_label }}"
+               yaml="{{ opts_yaml }}"
+  notify:
+    - calculate docker opts
+    - render docker defaults
+
+- name: set unit as a label
+  docker_opts: action=add
+               key=label val="{{ unit_label }}"
+               yaml="{{ opts_yaml }}"
   notify:
     - calculate docker opts
     - render docker defaults
