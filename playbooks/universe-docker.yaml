@@ -20,3 +20,5 @@
 - name: Add ubuntu to Docker group
   user: name=ubuntu state=present groups="docker"
 
+- set_fact:
+    docker_version_name: docker.io

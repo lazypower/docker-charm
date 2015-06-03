@@ -13,3 +13,6 @@
 
 - name: Install required packages.
   apt: name=lxc-docker-{{ version }} state=present update_cache=yes
+
+- set_fact:
+    docker_version_name: docker
