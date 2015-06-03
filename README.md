@@ -35,6 +35,13 @@ host networking. See the Known Limitations and issues about this.
 repositories. If you wish to deploy the latest upstream docker runtime enable
 this option.
 
+- version : String representation of the version you wish to deploy. This helps
+    when scaling a cluster post deployment, to ensure you dont have mismatched
+    versions deployed due to a new release
+
+    juju set docker version=1.6.2
+
+
 ## Known Limitations and Issues
 
 
