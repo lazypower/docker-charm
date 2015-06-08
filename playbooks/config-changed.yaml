@@ -31,4 +31,4 @@
 
 - name: Install docker compose
   include: install-compose.yaml
-  when: compose == "True"
+  when: compose == true
