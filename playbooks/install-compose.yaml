@@ -1,0 +1,4 @@
+---
+
+- name: pip install docker-compose
+  pip: name=docker-compose version=compose_version

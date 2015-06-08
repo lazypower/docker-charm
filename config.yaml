@@ -11,4 +11,9 @@ options:
     description: |
       When latest = true, specify the version to install from the PPA.
       latest = false will always assume use the current stable in distro.
+  compose:
+    type: boolean
+    default: true
+    description: |
+        Install docker compose, the formation launch utility
 

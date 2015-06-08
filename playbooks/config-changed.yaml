@@ -28,3 +28,7 @@
   notify:
     - calculate docker opts
     - render docker defaults
+
+- name: Install docker compose
+  include: install-compose.yaml
+  when: compose == "True"
