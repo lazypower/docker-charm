@@ -41,6 +41,10 @@ this option.
 
     juju set docker version=1.6.2
 
+- compose : Boolean representtion on if you wish to include `docker compose`
+    to be installed during the installation of `docker`. This allows you to
+    leverage a yaml file to spin up and manage multiple containers that
+    comprise a single application stack.
 
 ## Known Limitations and Issues
 
