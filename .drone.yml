@@ -2,5 +2,6 @@ image: python2.7
 git:
     path: github.com/chuckbutler/docker-charm
 script:
+    - sudo apt-get update
     - make
 
