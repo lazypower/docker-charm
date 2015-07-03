@@ -3,5 +3,7 @@ git:
     path: github.com/chuckbutler/docker-charm
 script:
     - sudo apt-get update
-    - make
+    - make tox
+    - make lint
+    - make unit_test
 
