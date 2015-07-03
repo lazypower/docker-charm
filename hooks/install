@@ -10,4 +10,4 @@ apt-get install -y \
 
 easy_install -U pip
 
-pip install -r --upgrade python-pkgs.txt
+pip install -r hooks/python-pkgs.txt
