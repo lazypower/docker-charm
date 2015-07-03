@@ -7,7 +7,7 @@ options:
       installs docker.io from the Ubuntu package archive."
   version:
     type: string
-    default: 1.5.0
+    default: 1.7.0
     description: |
       When latest = true, specify the version to install from the PPA.
       latest = false will always assume use the current stable in distro.
