@@ -1,4 +1,4 @@
-image: python2.7
+image: ubuntu:trusty
 git:
     path: github.com/chuckbutler/docker-charm
 script:
