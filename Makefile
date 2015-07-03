@@ -4,7 +4,7 @@ build: tox lint test
 
 tox:
 /usr/bin/tox:
-	sudo apt-get install -y  python-tox
+	sudo apt-get install -y  python-tox python-dev
 
 lint: /usr/bin/tox
 	@tox -e lint
