@@ -1,5 +1,6 @@
 # Docker ![](https://d3oypxn00j2a10.cloudfront.net/0.12.10/img/nav/docker-logo-loggedout.png)
 
+[![Build Status](http://drone.dasroot.net/api/badge/github.com/chuckbutler/docker-charm/status.svg?branch=master)](http://drone.dasroot.net/github.com/chuckbutler/docker-charm)
 
 
 This charm provides [Docker](http://docker.io). Docker is an open platform for

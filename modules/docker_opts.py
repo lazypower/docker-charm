@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from ansible.module_utils.basic import *
+from ansible.module_utils.basic import *  # noqa
 import yaml
 from path import path
 
@@ -120,7 +120,7 @@ class DockerOptsManager(object):
         if not isinstance(oldset, set):
             return self.fail(msg="%s is not a set")
 
-        if not self.val in oldset:
+        if self.val not in oldset:
             changed = True
             msg = "Added %s to %s:%s" % (self.val, self.key, oldset)
             oldset.add(self.val)

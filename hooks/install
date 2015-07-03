@@ -1,8 +1,13 @@
-#!/usr/bin/env python
-import setup
-import sys
+#!/bin/bash
+set -e
 
-if __name__ == "__main__":
-    setup.pre_install()
-    import hooks
-    hooks.main()
+apt-get update
+
+apt-get install -y \
+    python-dev \
+    python-pip \
+    git
+
+easy_install -U pip
+
+pip install -r --upgrade python-pkgs.txt

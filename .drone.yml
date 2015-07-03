@@ -1,0 +1,9 @@
+image: lazypower/ubuntu-drone
+git:
+    path: github.com/chuckbutler/docker-charm
+script:
+    - sudo apt-get update
+    - make tox
+    - make lint
+    - make unit_test
+
