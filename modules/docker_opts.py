@@ -19,9 +19,41 @@ class param(object):
 class DockerOptsManager(object):
     """
     Ansible module to manage a yaml file that holds key:val
-    pairs representing docker options.
+    pairs representing docker daemon options.
 
     Values may either be strings or sets.
+
+    When the "read" action is called, the module will compute a value to
+    use directly with the docker command.  The module injects this into
+    the global playbook namespace as `docker_daemon_opts`. Keys render
+    as `--$key=$val`. Set collections render as
+    `--$key=$member0..--$key=$memberN`.
+
+    Examples:
+
+    # task setting a value
+    - name: set subnet daemon option
+      docker_opts: action=set
+                   key=mtu
+                   val="{{ flannel_mtu }}"
+                   yaml="/path/to/opts.yaml"
+      when: flannel_mtu != ''
+
+    # render all sets and keys to a set of docker options flags
+    # Adds rendered value to global namespace as {{ docker_daemon_opts }}
+    - name: calculate docker opts
+      docker_opts: "action=read yaml=/path/to/opts.yaml"
+
+    # Populate a flag that has multiple values
+    - name: set service name as a label
+      docker_opts: action=add
+                   key=label val="{{ service_label }}"
+                   yaml="/path/to/opts.yaml"
+
+    - name: set unit as a label
+      docker_opts: action=add
+                   key=label val="{{ unit_label }}"
+                   yaml="/path/to/opts.yaml"
     """
     action = param('action')
     key = param('key')
@@ -144,7 +176,7 @@ class DockerOptsManager(object):
         if action is None:
             action = self.action
 
-        action = getattr(self, action, None)
+        action = getattr(self, action)
         return action(self.data)
 
     @classmethod
