@@ -163,7 +163,7 @@ class DockerOptsManager(object):
         changed = False
         msg = "No change to %s" % self.path
         oldset = data.get(self.key, None)
-        if oldset is not None or not isinstance(oldset, set):
+        if oldset is not None and not isinstance(oldset, set):
             return self.fail(msg="%s is not a set")
         if self.val in oldset:
             changed = True
