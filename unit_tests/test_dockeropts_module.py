@@ -42,7 +42,7 @@ def tempdir(request):
 def_state = dict(key='wat',
                  val='yeah',
                  action='ok',
-                 path="/wat/hey.yaml")
+                 yaml="/wat/hey.yaml")
 
 
 @pytest.fixture
@@ -69,12 +69,25 @@ def test_init(docker_opts, ansible_module_obj):
     assert dom.val == 'yeah'
 
 
+def test_add_data(docker_opts, tempdir):
+    amo = ansible_module_obj(dict(key='test',
+                             val='value',
+                             yaml=tempdir / 'add.yaml',
+                             action='add'))
+    dom = docker_opts.DockerOptsManager(amo)
+    out = dom.dispatch()
+    assert amo.exit_json.called
+    assert dom.key == 'test'
+    assert dom.val == 'value'
+    assert dom.action == 'add'
+    assert dom.path == tempdir / 'add.yaml'
+
+
 def test_simple_write_data(docker_opts, tempdir):
     amo = ansible_module_obj(dict(key='wat',
                                   val='hey',
-                                  yaml=tempdir / "opts.yaml",
+                                  yaml=tempdir / "write.yaml",
                                   action="set"))
-
     dom = docker_opts.DockerOptsManager(amo)
     out = dom.dispatch()
     assert amo.exit_json.called
