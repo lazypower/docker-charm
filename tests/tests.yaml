@@ -1,0 +1,4 @@
+virtualenv: false
+makefile:
+  - lint
+  - unit_test
