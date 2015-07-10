@@ -10,12 +10,10 @@ subordinate: false
 provides:
   docker-containers:
     interface: containers
-  events:
-    interface: docker-socket
+#  events:
+#    interface: docker-socket
 requires:
   network:
     interface: overlay-network
-    optional: true
-  logging:
-    interface: docker-socket
-    optional: true
+#  logging:
+#    interface: docker-socket
