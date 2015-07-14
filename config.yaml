@@ -16,4 +16,12 @@ options:
     default: true
     description: |
         Install docker compose, the formation launch utility
-
+  aufs:
+    type: boolean
+    default:  false
+    description: |
+        Change the backend storage driver from devicemapper to AUFS.
+        The device mapper storage engine is known to be problematic, and AUFS
+        is not enabled by default in Ubuntu. This will install AUFS support and
+        swap the backend. **NOTE** It is not recommended to reconfigure this post
+        deployment. You may incur dataloss.
