@@ -18,7 +18,7 @@ options:
         Install docker compose, the formation launch utility
   aufs:
     type: boolean
-    default:  false
+    default: true
     description: |
         Change the backend storage driver from devicemapper to AUFS.
         The device mapper storage engine is known to be problematic, and AUFS
