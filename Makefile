@@ -6,11 +6,11 @@ tox:
 /usr/bin/tox:
 	sudo apt-get install -y  python-tox python-dev python-virtualenv
 
-lint: /usr/bin/tox 
+lint: tox
 	tox -e lint
 
 
-unit_test: /usr/bin/tox
+unit_test: tox
 	tox
 
 release: check-path virtualenv
