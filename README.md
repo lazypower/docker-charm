@@ -47,6 +47,15 @@ this option.
     leverage a yaml file to spin up and manage multiple containers that
     comprise a single application stack.
 
+- aufs : **new as of v0.1.6** Defaults the backend storage driver to AUFS. The
+    older option of device mapper was horribly broken in most setups, and has
+    been completely depreciated by the Docker foundation. Disable to keep the
+    DeviceMapper backend. - Not recommended. **note** this will break existing
+    containers if you upgrade existing setups. Ensure you account for this when
+    upgrading your docker clusters that are previously deployed with this charm.
+
+    > See blurb under Known Issues for migration instructions.
+
 ## Known Limitations and Issues
 
 
@@ -86,7 +95,16 @@ There is no support for installation of the docker service in
 There is however [a bug](https://github.com/chuckbutler/docker-charm/issues/13) to track the
 progress of this feature.
 
+#### AUFS Upgrade Stopped my containers from working
 
+If you have older containers deployed and running, you will need to pause them
+and export. Once the tarballs of the containers have been exported - upgrade
+your cluster and reimport following the CLI instructions below as a guide
+
+    docker export <<container id>> > mycontainer-latest.tgz
+    # upgrade
+    docker import -i mycontainer-latest - mycontainer:latest
+    docker run <<options>> mycontainer:latest
 
 
 # Contact Information
