@@ -29,6 +29,14 @@
       - aufs-tools
   when: aufs == true
 
+- name: stop docker to remove device mapper
+  service: "name={{docker_version_name}} state=stopped"
+  when: aufs == true
+
+- name: Remove Devicemapper backend if present
+  file: path=/var/lib/docker/devicemapper state=absent
+  when: aufs == true
+
 - name: Register AUFS option
   docker_opts: action=add
                key="storage-driver" val="aufs"
@@ -50,6 +58,7 @@
   notify:
     - calculate docker opts
     - render docker defaults
+    - restart docker
 
 - name: Install docker compose
   include: install-compose.yaml
