@@ -2,6 +2,10 @@
 # Cache the fact data for later config updates outside of the relationship context
 # If we modify docker defaults later, the data is lost without it being cached.
 
+- name: Set Status to ready
+  shell: "status-set maintenance 'Configuring network'"
+
+
 - name: Receive Relationship Data subnet
   shell: relation-get flannel-subnet
   register: flannel_subnet
@@ -40,6 +44,9 @@
     - calculate docker opts
     - render docker defaults
 
+- name: Set Status to ready
+  shell: "status-set maintenance 'Recycling Docker'"
+
 - name: Halt docker service
   service: name={{docker_version_name}} state=stopped
 
@@ -53,4 +60,14 @@
   notify:
     - restart docker
 
+# This is a little shifty, as we cannot garantee we have recycled docker here
+# but i like setting it here better than in site.yaml as if we dont have data
+# we should set status to blocked...
+- name: Set Status to ready
+  shell: "status-set active ''"
+  when: flannel_mtu != ''
+
+- name: Set Status to ready
+  shell: "status-set blocked 'Waiting on data from networking charm'"
+  when: flannel_mtu == ''
 

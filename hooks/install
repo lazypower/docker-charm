@@ -1,4 +1,8 @@
 #!/bin/bash
+
+set +e
+status-set maintenance "Installing predependencies"
+
 set -e
 
 apt-get update

@@ -36,3 +36,10 @@
       include: uninstall-docker.yaml
       tags:
         - stop
+
+    - name: Set Status to ready
+      shell: "status-set active ''"
+      tags:
+        - config-changed
+        - start
+

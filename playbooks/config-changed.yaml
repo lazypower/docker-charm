@@ -1,6 +1,9 @@
 ---
 - include: installation-status.yaml
 
+- name: Set Status to configuring
+  shell: "status-set maintenance 'Configuring' "
+
 - name: enforce latest docker
   when: latest == true and latest_installed == "False"
   include: latest-docker.yaml
@@ -12,6 +15,10 @@
 - set_fact:
     service_label: "service={{ service_name }}"
     unit_label: "unit={{ local_unit }}"
+
+- name: Set Status to configuring
+  shell: "status-set maintenance 'Configuring UFS storage' "
+  when: aufs == true
 
 - name: grab release info
   shell: uname -r
@@ -41,6 +48,10 @@
   docker_opts: action=add
                key="storage-driver" val="aufs"
                yaml="{{ opts_yaml }}"
+  when: aufs == true
+
+- name: Set Status to configuring
+  shell: "status-set maintenance 'Configuring labels' "
   when: aufs == true
 
 - name: set service name as a label

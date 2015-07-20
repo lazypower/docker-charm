@@ -1,4 +1,7 @@
 ---
+- name: "Set Juju Status message for probing environment"
+  shell: "status-set maintenance 'Probing unit for configuration status'"
+
 - name: check for docker.io
   shell: "dpkg -l docker.io | grep docker.io | cut -d' '  -f1"
   register: universe_check
