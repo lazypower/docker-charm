@@ -3,7 +3,6 @@
 build: tox lint test
 
 tox:
-/usr/bin/tox:
 	sudo apt-get install -y  python-tox python-dev python-virtualenv
 
 lint: tox
