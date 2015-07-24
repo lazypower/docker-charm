@@ -1,4 +1,4 @@
-# Docker ![](https://d3oypxn00j2a10.cloudfront.net/0.12.10/img/nav/docker-logo-loggedout.png)
+# Docker Charm
 
 [![Build Status](http://drone.dasroot.net/api/badge/github.com/chuckbutler/docker-charm/status.svg?branch=master)](http://drone.dasroot.net/github.com/chuckbutler/docker-charm)
 
@@ -20,20 +20,20 @@ instructions.
 
 # Using the Docker Charm
 
-Step by step instructions on using the docker charm:
+Step by step instructions on using the Docker charm:
 
     juju deploy cs:~lazypower/trusty/docker
 
 ## Scale out Usage
 
-Scaling out the docker service is as simple as adding additional docker units
+Scaling out the Docker service is as simple as adding additional Docker units
 to expand your cluster. However, you will need an SDN solution to provide cross
 host networking. See the Known Limitations and issues about this.
 
 # Configuration
 
 - latest : By default the charm assumes installation from the ubuntu
-repositories. If you wish to deploy the latest upstream docker runtime enable
+repositories. If you wish to deploy the latest upstream Docker runtime enable
 this option.
 
 - version : String representation of the version you wish to deploy. This helps
@@ -52,7 +52,7 @@ this option.
     been completely depreciated by the Docker foundation. Disable to keep the
     DeviceMapper backend. - Not recommended. **note** this will break existing
     containers if you upgrade existing setups. Ensure you account for this when
-    upgrading your docker clusters that are previously deployed with this charm.
+    upgrading your Docker clusters that are previously deployed with this charm.
 
     > See blurb under Known Issues for migration instructions.
 
@@ -62,7 +62,7 @@ this option.
 #### AWS t1.micro
 
 Performance will suffer on an AWS t1.micro unit - as it has such a limited amount of ram. Between
-the juju unit-agent, and the docker daemon + workloads - you will only be able to run the smallest
+the juju unit-agent, and the Docker daemon + workloads - you will only be able to run the smallest
 of deployments on them. Thus it is not recommended.
 
 #### Local Provider Blockers
@@ -80,7 +80,7 @@ of deployments on them. Thus it is not recommended.
 
 #### Host Only Networking
 
- By default, docker deploys a host-only bridge adapter. Containers are able to communicate with one
+ By default, Docker deploys a host-only bridge adapter. Containers are able to communicate with one
  another if you forward host ports to the containers using the `-p` option. More on this in the
 [Deploying Containers]({{site.url}}/user/deploying-containers.html) docpage.
 
@@ -90,7 +90,7 @@ of deployments on them. Thus it is not recommended.
 
 #### Offline Environments
 
-There is no support for installation of the docker service in
+There is no support for installation of the Docker service in
 [offline environments](https://jujucharms.com/docs/howto-offline-charms).
 There is however [a bug](https://github.com/chuckbutler/docker-charm/issues/13) to track the
 progress of this feature.
