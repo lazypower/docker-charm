@@ -3,12 +3,12 @@
     opts_yaml: /etc/ansible/docker-opts.yaml
     docker_version_name: false
   handlers:
-    - name: restart docker
-      service: "name={{docker_version_name}} state=restarted"
     - name: calculate docker opts
       docker_opts: "action=read yaml={{opts_yaml}}"
     - name: render docker defaults
       template: "src=templates/docker-defaults dest=/etc/default/{{docker_version_name}}"
+    - name: restart docker
+      service: "name={{docker_version_name}} state=restarted"
   tasks:
     - name: Check Installation Status
       include: installation-status.yaml
