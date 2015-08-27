@@ -1,5 +1,5 @@
 -e git+https://github.com/whitmo/ansible-charm.git#egg=AnsibleCharm
 charmhelpers
 ansible
-path.py
+path.py <= 7.7.1
 docker-py
