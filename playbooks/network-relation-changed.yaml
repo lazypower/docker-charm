@@ -32,6 +32,7 @@
   notify:
     - calculate docker opts
     - render docker defaults
+    - restart docker
 
 - name: set subnet daemon option
   docker_opts: action=set key=mtu val="{{ flannel_mtu }}" yaml="{{opts_yaml}}"
@@ -39,6 +40,7 @@
   notify:
     - calculate docker opts
     - render docker defaults
+    - restart docker
 
 - name: Halt docker service
   service: name={{docker_version_name}} state=stopped
