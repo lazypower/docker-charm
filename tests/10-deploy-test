@@ -66,30 +66,29 @@ class TestDeployment(unittest.TestCase):
     def test_latest_config_option(self):
         """ Set config option to latest and verify docker is installed """
         self.deployment.configure('docker', {'latest': True,
-                                             'version': '1.7.0'})
+                                             'version': '1.8.1-0~trusty'})
         self.deployment.sentry.wait()
-        command = 'dpkg -l lxc-docker-1.7.0'
+        command = 'dpkg -l docker-engine'
         output, code = self.docker_unit.run(command)
-        print(output)
         if output.find('ii') == -1:
             message = 'Could not upgrade docker to latest!'
             amulet.raise_status(amulet.FAIL, msg=message)
         command = 'dpkg -l docker.io'
         output, code = self.docker_unit.run(command)
-        print(output)
         if output.find('ii') != -1:
             message = "Leftover docker.io package found"
             amulet.raise_status(amulet.Fail, msg=message)
 
-    def test_latest_config_aufs_enabled(self):
-	''' 
-            This test has a byproduct of actually checking to make sure
-	    we are cleaning up the broken devicemapper leftovers. Which
-	    is totally cool
+    def test_latest_config_option_aufs_enabled(self):
         '''
+        This test has a byproduct of actually checking to make sure
+        we are cleaning up the broken devicemapper leftovers. Which
+        is totally cool
+        '''
+        # Random failures that require a sleep... so remove the sleep
+        # and recycle the service a second time.
         command = "docker info"
         output, code = self.docker_unit.run(command)
-        print(output)
         assert "aufs" in output
 
 if __name__ == '__main__':

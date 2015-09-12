@@ -4,15 +4,20 @@
   when: universe_installed
 
 - name: Add upstream apt key
-  apt_key: id=36A1D7869245C8950F966E92D8576A8BA88D21E9 keyserver=keyserver.ubuntu.com
+  apt_key: id=58118E89F3A912897C070ADBF76221572C52609D keyserver=keyserver.ubuntu.com
 
 - name: Add Upstream apt repository
-  apt_repository: repo='deb https://get.docker.com/ubuntu docker main' state=present
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-trusty main' state=present
 
 - debug: msg="Installing latest"
 
 - name: Install required packages.
-  apt: name=lxc-docker-{{ version }} state=present update_cache=yes
+  apt: name=docker-engine={{version}} state=present update_cache=yes
+  when: version != ""
+
+- name: Install docker-engine metapackage
+  apt: name=docker-engine state=present update_cache=yes
+  when: version == ""
 
 - set_fact:
     docker_version_name: docker
