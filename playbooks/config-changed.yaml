@@ -31,30 +31,39 @@
 
 - name: stop docker to remove device mapper
   service: "name={{docker_version_name}} state=stopped"
-  when: aufs == true
+  when: aufs == true and latest == true
+  notify:
+    - restart docker
 
 - name: Remove Devicemapper backend if present
   file: path=/var/lib/docker/devicemapper state=absent
-  when: aufs == true
+  when: aufs == true and latest == true
 
 - name: Register AUFS option
   docker_opts: action=add
                key="storage-driver" val="aufs"
                yaml="{{ opts_yaml }}"
-  when: aufs == true
+  when: aufs == true and latest == true
+  notify:
+    - calculate docker opts
+    - render docker defaults
+    - restart docker
 
 - name: set service name as a label
   docker_opts: action=add
                key=label val="{{ service_label }}"
                yaml="{{ opts_yaml }}"
+  when: latest == true
   notify:
     - calculate docker opts
     - render docker defaults
+    - restart docker
 
 - name: set unit as a label
   docker_opts: action=add
                key=label val="{{ unit_label }}"
                yaml="{{ opts_yaml }}"
+  when: latest == true
   notify:
     - calculate docker opts
     - render docker defaults
