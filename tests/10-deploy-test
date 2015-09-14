@@ -68,6 +68,9 @@ class TestDeployment(unittest.TestCase):
         self.deployment.configure('docker', {'latest': True,
                                              'version': '1.8.1-0~trusty'})
         self.deployment.sentry.wait()
+        import time
+        print("sleeping 15 seconds because reasons")
+        time.sleep(15)
         command = 'dpkg -l docker-engine'
         output, code = self.docker_unit.run(command)
         if output.find('ii') == -1:
