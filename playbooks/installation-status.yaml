@@ -4,8 +4,8 @@
   register: universe_check
 
 # Updated due to bug #24
-- name: check for lxc-docker
-  shell: "dpkg -l lxc-docker-{{version}} | grep lxc-docker | cut -d' '  -f1"
+- name: check for latest-docker
+  shell: "dpkg -l docker-engine | grep docker-engine | cut -d' '  -f1"
   register: latest_check
 
 - set_fact:
