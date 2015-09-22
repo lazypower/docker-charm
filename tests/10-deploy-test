@@ -15,7 +15,7 @@ class TestDeployment(unittest.TestCase):
         """ This method is run once at class creation. """
         self.deployment = amulet.Deployment(series='trusty')
 
-        self.deployment.add('docker', 'local:trusty/docker')
+        self.deployment.add('docker', 'docker')
 
         try:
             self.deployment.setup(timeout=seconds)
