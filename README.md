@@ -1,7 +1,6 @@
 # Docker Charm
 
-[![Build Status](http://drone.dasroot.net/api/badge/github.com/chuckbutler/docker-charm/status.svg?branch=master)](http://drone.dasroot.net/github.com/chuckbutler/docker-charm)
-
+[![Build Status](http://drone.systemzoo.org/api/badge/github.com/chuckbutler/docker-charm/status.svg?branch=master)](http://drone.systemzoo.org/github.com/chuckbutler/docker-charm)
 
 This charm provides [Docker](http://docker.io). Docker is an open platform for
 developers and sysadmins to build, ship, and run distributed applications.
