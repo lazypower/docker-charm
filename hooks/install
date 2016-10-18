@@ -4,6 +4,9 @@ set -e
 apt-get update
 
 apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
     python-dev \
     python-pip \
     git
