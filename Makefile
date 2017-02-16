@@ -1,20 +1,9 @@
 #!/usr/bin/make
 
-build: tox lint test
+build: lint unit_test
 
 virtualenv:
 	virtualenv .venv
-
-tox:
-/usr/bin/tox:
-	sudo apt-get install -y  python-tox python-dev python-virtualenv
-
-lint: /usr/bin/tox
-	tox -e lint
-
-
-unit_test: /usr/bin/tox
-	tox
 
 release: check-path virtualenv
 	@.venv/bin/pip install git-vendor
@@ -25,6 +14,20 @@ ifndef DOCKER_MASTER_BZR
 	$(error DOCKER_MASTER_BZR is undefined)
 endif
 
+.PHONY: apt_prereqs
+apt_prereqs:
+	@# Need tox, but don't install the apt version unless we have to (don't want to conflict with pip)
+	@which tox >/dev/null || (sudo apt-get install -y python-pip && sudo pip install tox)
+
+.PHONY: lint
+lint: apt_prereqs
+	@tox --notest
+	@charm proof
+
+.PHONY: unit_test
+unit_test: apt_prereqs
+	@echo Starting tests...
+	tox
 
 clean:
 	@rm -rf .venv
